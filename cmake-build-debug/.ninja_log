@@ -1,0 +1,5 @@
+# ninja log v6
+1	224	7602911829902783	build.ninja	b93de717eb60626c
+13	81	7602899517098438	CMakeFiles/Supemon.dir/main.c.obj	f6bcb749d8211d76
+2	86	7602905321710043	CMakeFiles/Supemon.dir/intro.c.obj	8a4c2f03b615258b
+87	190	7602905322550002	Supemon.exe	70105b19d00c6b2
