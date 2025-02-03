@@ -7,6 +7,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+
+
 int intro()
 {
     printf("Welcome to Supémon !\n");
@@ -34,6 +36,7 @@ int intro()
     printf("Now, let's start your adventure !\n");
     printf("Press any key to continue...\n");
     scanf("%c", &c);
+
     return 0;
 
 }

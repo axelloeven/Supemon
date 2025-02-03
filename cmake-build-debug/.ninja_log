@@ -1,5 +1,11 @@
 # ninja log v6
-1	224	7602911829902783	build.ninja	b93de717eb60626c
-13	81	7602899517098438	CMakeFiles/Supemon.dir/main.c.obj	f6bcb749d8211d76
-2	86	7602905321710043	CMakeFiles/Supemon.dir/intro.c.obj	8a4c2f03b615258b
-87	190	7602905322550002	Supemon.exe	70105b19d00c6b2
+1	329	7603069521482837	build.ninja	b93de717eb60626c
+3	270	7603054455961806	CMakeFiles/Supemon.dir/main.c.obj	f6bcb749d8211d76
+3	327	7603050800414870	CMakeFiles/Supemon.dir/intro.c.obj	8a4c2f03b615258b
+273	412	7603054611635643	Supemon.exe	108f6d0cc0d4f23f
+3	315	7603069156290034	CMakeFiles/Supemon.dir/out-of-combat.c.obj	99c93cde39626ccf
+1	333	7603069521482837	build.ninja	b93de717eb60626c
+3	295	7603069521773893	CMakeFiles/Supemon.dir/battle.c.obj	63b8e46836d85ba1
+36	348	7603069522112836	CMakeFiles/Supemon.dir/shop.c.obj	216b49304dc0d667
+69	350	7603069522442832	CMakeFiles/Supemon.dir/center.c.obj	741bbe8e17f6860c
+350	499	7603069525256264	Supemon.exe	1d0e645356edd339
