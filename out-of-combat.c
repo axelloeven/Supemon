@@ -27,22 +27,22 @@ int outofcombat()
     int choice;
     scanf("%d", &choice);
     printf("You chose %s !\n", choice == 1 ? "Into the wild" : choice == 2 ? "In the shop" : choice == 3 ? "In the Supémon Center" : "Leave the game");
-    if (choice != 1)
+    if (choice == 1)
     {
 
         battle();
 
         }
-        if (choice == 2)
-        {
+    if (choice == 2)
+    {
             shop();
         }
-        if (choice ==3)
-        {
+    if (choice ==3)
+    {
             center();
         }
-        if (choice == 4)
-        {
+    if (choice == 4)
+    {
             printf("Goodbye !\n");
             exit(0);
         }
