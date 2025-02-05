@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "shop.h"
-
+#include "inventory.h"
 int shop() {
 
   printf("Welcome to the shop !\n");
@@ -26,7 +26,6 @@ int shop() {
       if (supcoins >= 100)
       {
         supcoins -= 100;
-        pv += 5;
         printf("You bought a potion !\n");
         shop();
       }
@@ -41,7 +40,6 @@ int shop() {
       if (supcoins >= 300)
       {
         supcoins -= 300;
-        pv += 10;
         printf("You bought a super potion !\n");
         shop();
       }
@@ -56,7 +54,6 @@ int shop() {
       if (supcoins >= 700)
       {
         supcoins -= 700;
-        level += 1;
         printf("You bought a rare candy !\n");
         shop();
       }
