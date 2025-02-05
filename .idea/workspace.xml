@@ -30,10 +30,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="770a00f1-01d4-4890-8ef2-4680ba1392aa" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/inventory.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/inventory.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop.c" beforeDir="false" afterPath="$PROJECT_DIR$/shop.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/intro.c" beforeDir="false" afterPath="$PROJECT_DIR$/intro.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/supemon.c" beforeDir="false" afterPath="$PROJECT_DIR$/supemon.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +97,7 @@
     "RunOnceActivity.west.config.association.type.startup.service": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "inventory",
+    "git-widget-placeholder": "supemons",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
