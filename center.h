@@ -5,6 +5,6 @@
 #ifndef CENTER_H
 #define CENTER_H
 
-int center();
+void center();
 
 #endif //CENTER_H

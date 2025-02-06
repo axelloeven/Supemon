@@ -3,8 +3,32 @@
 //
 
 #include "center.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include "choicesupemon.h"
 
-int center()
+void center(Joueur joueur)
     {
-      return 0;
-      }
+        printf("Welcome to the Supémon Center !\n");
+        printf("What do you want to do ?\n");
+        printf("1. Watch your team\n");
+        printf("1. Heal your Supémon\n");
+        printf("2. Leave the Supémon Center\n");
+        int choice;
+        scanf("%d", &choice);
+        if (choice == 1)
+        {
+            printf("Here your team: \n", joueur.nb_supemon, MAX);
+            for (int i = 0; i < joueur.nb_supemon; i++)
+            {
+                printf("Supémon %d : %s\n", i + 1, joueur.equipe[i].name);
+            }
+            center();
+        }
+        if (choice == 2)
+        {
+            outofcombat();
+        }
+
+
+    }
