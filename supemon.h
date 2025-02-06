@@ -6,7 +6,10 @@
 #define SUPEMON_H
 
 
-
+void afficherPokemon(pokemon p);
+int supmander();
+int supasaur();
+int supirtle();
 
 
 #endif //SUPEMON_H

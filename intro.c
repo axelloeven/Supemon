@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include <windows.h>
 #include <unistd.h>
-#include "supemons.h"
+#include "supemon.h"
 
 
 int intro()
@@ -42,7 +42,6 @@ int intro()
     int choicesup;
     scanf("%d", &choicesup);
     printf("Wow ! You chose %s !\n", choicesup == 1 ? "Supmander" : choicesup == 2 ? "Supasaur" : "Supirtle");
-
     sleep(1);
     printf("What a great choice !\n");
     sleep(1);

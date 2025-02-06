@@ -2,9 +2,7 @@
 // Created by axelo on 04/02/2025.
 //
 
-```
 
-<!-- replace lines 35 to 35 -->
 // this file is using for the information of the supemon. Informations are the HP, the attack, defense, evasion, accuracy speeds and moves.
 #include "supemon.h"
 #include <stdio.h>
@@ -50,7 +48,7 @@ void listeDesCoup(pokemon p, int stat[]){
 }
 
 }
-int main() {
+int supmander() {
     pokemon supmander = {
         "Supmander",
         10,
@@ -63,7 +61,8 @@ int main() {
         -3,
       p.attack + 1
     };
-
+}
+int supasaur() {
     pokemon supasaur = {
         "Supasaur",
         9,
@@ -76,16 +75,19 @@ int main() {
         -2,
         p.evasion + 1
     };
+    }
+int supirtle() {
 
     pokemon supirtle = {
-        "Porygon2",
-        50,
-        40,
-        30,
-        25,
-        80.0,
-        60,
+        "Supirtle",
+        11,
+        1,
+        2,
+        2,
+        1,
+        1,
         "Pound; Shell",
-        -2,
+        -1,
         p.defense + 1
     };
+    }

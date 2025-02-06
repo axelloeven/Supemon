@@ -5,6 +5,9 @@
 #include "battle.h"
 #include "intro.h"
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "choicesupemon.h"
 
 // This structure is used to store the information of the supemon.
 
@@ -30,6 +33,56 @@ void afficherPokemon(pokemon p) {
     printf("Précision : %.2f\n", p.precision);
     printf("Vitesse : %.2f\n", p.vitesse);
     printf("Moves : %s, %s\n", p.moves[0], p.moves[1]);
+}
+
+
+
+
+void attack(pokemon p)
+{
+    if (p.hp <= 0)
+    {
+        printf("You can't attack, your Supémon is KO!");
+
+    }
+
+    printf("Which move do you want to use ?");
+    printf("1. %s", p.moves[0]);
+    printf("2. %s", p.moves[1]);
+    int choice;
+    scanf("%d", &choice);
+    if (choice == 1)
+    {
+        printf("You used Scratch!");
+        printf("The enemy lost 3 HP!");
+        p.hp -= 3;
+    }
+    if (choice == 2)
+    {
+        printf("You used Growl!");
+        printf("Your attack increased by 1!");
+        p.attaque += 1;
+    }
+}
+
+int capture(pokemon p, Joueur *joueur)
+{   if (joueur -> nb_supemon < MAX)
+    {
+    printf("You throw a Pokéball!");
+    int capture = rand() % 2;
+    if (capture == 1)
+    {
+        printf("You captured the enemy!");
+        printf("You can now use it in battle!");
+        joueur -> equipe[joueur -> nb_supemon] = p;
+        joueur -> nb_supemon++;
+
+    }
+    else
+    {
+        printf("The enemy broke free!");
+    }
+}
 }
 
 int battle()
@@ -113,29 +166,3 @@ int battle()
     return 0;
 }
 
-void attack(pokemon p)
-{
-    if (p.hp <= 0)
-    {
-        printf("You can't attack, your Supémon is KO!");
-        return;
-    }
-
-    printf("Which move do you want to use ?");
-    printf("1. %s", p.moves[0]);
-    printf("2. %s", p.moves[1]);
-    int choice;
-    scanf("%d", &choice);
-    if (choice == 1)
-    {
-        printf("You used Scratch!");
-        printf("The enemy lost 3 HP!");
-        p.hp -= 3;
-    }
-    if (choice == 2)
-    {
-        printf("You used Growl!");
-        printf("Your attack increased by 1!");
-        p.attaque += 1;
-    }
-}
