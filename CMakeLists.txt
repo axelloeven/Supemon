@@ -12,4 +12,7 @@ add_executable(Supemon
         battle.c
         shop.c
         center.c
+        supemon.c
+        choicesupemon.c
+        inventory.c
 )

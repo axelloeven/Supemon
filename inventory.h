@@ -5,6 +5,13 @@
 #ifndef INVENTORY_H
 #define INVENTORY_H
 
-void inventory(potion_count, super_potion_count, rare_candy_count, supcoins);
+// Déclaration des variables globales
+extern int potion_count;
+extern int super_potion_count;
+extern int rare_candy_count;
+extern int supcoins;
+
+// Prototype de la fonction
+void inventory(void);
 
 #endif //INVENTORY_H

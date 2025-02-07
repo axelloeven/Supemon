@@ -32,10 +32,10 @@ void capture(Pokemon p, Joueur *joueur)
 
 void team(Joueur *joueur)
     {
-  printf("Here your team: \n", joueur.nb_supemon, MAX);
-            for (int i = 0; i < joueur.nb_supemon; i++)
+  printf("Here your team: \n", joueur->nb_supemon, MAX);
+            for (int i = 0; i < joueur->nb_supemon; i++)
             {
-                printf("Supémon %d : %s\n", i + 1, joueur.equipe[i].name);
+                printf("Supémon %d : %s\n", i + 1, joueur->equipe[i].nom);
             }
             center();
       }
