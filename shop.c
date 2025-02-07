@@ -12,6 +12,7 @@ int shop() {
   printf("1. Buy an object\n");
   printf("2. Sell an object\n");
   int choicebs;
+    scanf(%d , &choicebs);
   if (choicebs == 1)
   {
     printf("What do yoy want to buy ?\n");
