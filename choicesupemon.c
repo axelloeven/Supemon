@@ -8,20 +8,34 @@
 #include <stdlib.h>
 #include <string.h>
 #include "supemon.h"
-#define MAX 6
+#include "center.h"
 
-typedef struct {
-    char name[20];
-    int level;
-    int hp;
-    int attack;
-    int defense;
-    int speed;
-    int xp;
-    int xp_max;
-} Supemon;
+void capture(Pokemon p, Joueur *joueur)
+{   if (joueur -> nb_supemon < MAX)
+    {
+    printf("You throw a Pokéball!");
+    int capture = rand() % 2;
+    if (capture == 1)
+    {
+        printf("You captured the enemy!");
+        printf("You can now use it in battle!");
+        joueur -> equipe[joueur -> nb_supemon] = p;
+        joueur -> nb_supemon++;
 
-typedef struct {
-  Supemon equipe[MAX];
-    int nb_supemon;
-} Joueur;
+    }
+    else
+    {
+        printf("The enemy broke free!");
+    }
+}
+}
+
+void team(Joueur *joueur)
+    {
+  printf("Here your team: \n", joueur.nb_supemon, MAX);
+            for (int i = 0; i < joueur.nb_supemon; i++)
+            {
+                printf("Supémon %d : %s\n", i + 1, joueur.equipe[i].name);
+            }
+            center();
+      }

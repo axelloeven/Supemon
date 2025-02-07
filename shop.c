@@ -18,7 +18,7 @@ int shop() {
     printf("What do yoy want to buy ?\n");
     printf("1. Potion (100 Supcoins), It gives +5PV to your Supemon \n");
     printf("2. Super Potion (300 Supcoins), It gives +10PV to your Supemon \n");
-    prinf("3. Rare Candy (700 Supcoins), It gives +1 level to your Supemon \n");
+    printf("3. Rare Candy (700 Supcoins), It gives +1 level to your Supemon \n");
     printf("4. Back to the shop menu\n");
     int choicebuy;
     scanf("%d", &choicebuy);
@@ -70,7 +70,7 @@ int shop() {
     }
 
   }
-  if (choicebs ==2 )
+  if (choicebs == 2 )
   {
       printf("What do you want to sell ?\n");
       printf("1. Potion (50 Supcoins)\n");

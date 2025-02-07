@@ -6,12 +6,16 @@
 #include "inventory.h"
 
 
-int inventory()
+void inventory(potion_count, super_potion_count, rare_candy_count, supcoins)
+  int potion_count;
+    int super_potion_count;
+    int rare_candy_count;
+    int supcoins;
 {
-  int potion_count = 1;
-    int super_potion_count = 0;
-    int rare_candy_count = 0;
-    int supcoins = 1000;
+    potion_count = 1;
+    super_potion_count = 0;
+    rare_candy_count = 0;
+    supcoins = 1000;
     printf("Welcome to your inventory !\n");
     printf("You have %d potions, %d super potions, %d rare candies and %d Supcoins.\n", potion_count, super_potion_count, rare_candy_count, supcoins);
     printf("What do you want to do ?\n");

@@ -8,23 +8,13 @@
 #include <stdlib.h>
 #include <string.h>
 #include "choicesupemon.h"
+#include "supemon.h"
+#include "out-of-combat.h"
 
-// This structure is used to store the information of the supemon.
 
-
-typedef struct {
-    char nom[50];
-    int hp;
-    int attaque;
-    int défense;
-    int évasion;
-    double précision;
-    double vitesse;
-    char moves[2][50];
-} pokemon;
 
 // This function is used to display the information of the supemon.
-void afficherPokemon(pokemon p) {
+void afficherPokemon(Pokemon p) {
     printf("Nom : %s\n", p.nom);
     printf("HP : %d\n", p.hp);
     printf("Attaque : %d\n", p.attaque);
@@ -38,7 +28,7 @@ void afficherPokemon(pokemon p) {
 
 
 
-void attack(pokemon p)
+void attack(Pokemon p)
 {
     if (p.hp <= 0)
     {
@@ -65,25 +55,7 @@ void attack(pokemon p)
     }
 }
 
-void capture(pokemon p, Joueur *joueur)
-{   if (joueur -> nb_supemon < MAX)
-    {
-    printf("You throw a Pokéball!");
-    int capture = rand() % 2;
-    if (capture == 1)
-    {
-        printf("You captured the enemy!");
-        printf("You can now use it in battle!");
-        joueur -> equipe[joueur -> nb_supemon] = p;
-        joueur -> nb_supemon++;
 
-    }
-    else
-    {
-        printf("The enemy broke free!");
-    }
-}
-}
 
 void change ()
 {
@@ -109,7 +81,7 @@ int battle()
     printf("A wild enemy appears!");
     int pokemonrandom = rand() % 3;
     printf("You are fighting a %s", pokemonrandom == 1 ? "Supmander" : pokemonrandom == 2 ? "Supasaur" : "Supirtle");
-    pokemon p;
+    Pokemon p;
     if (pokemonrandom == 1)
     {
         strcpy(p.nom, "Supmander");
@@ -155,25 +127,25 @@ int battle()
             printf("Capture the enemy");
             int choice;
             scanf("%d", &choice);
-            if (choice == 1)
-            {
+            switch (choice) {
+                case 1:
                 attack(p);
-            }
-            if (choice == 2)
-            {
-                change(p);
-            }
-            if (choice == 3)
-            {
+                    break;
+                case 2:
+                change();
+                    break;
+                case 3:
                 item(p);
-            }
-            if (choice == 4)
-            {
-                run(p);
-            }
-            if (choice == 5)
-            {
-                capture(p);
+                    break;
+                case 4:
+                run();
+                    break;
+                case 5:
+                capture();
+                    break;
+                default:
+                    printf("Invalid choice!");
+                    break;
             }
 
 
@@ -184,5 +156,6 @@ int battle()
             return 0;
         }
     }
+    return 0;
 }
 

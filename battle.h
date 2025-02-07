@@ -5,6 +5,7 @@
 #ifndef BATTLE_H
 #define BATTLE_H
 
+
 int battle();
 
 #endif //BATTLE_H

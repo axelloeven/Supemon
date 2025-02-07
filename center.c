@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "choicesupemon.h"
+#include "out-of-combat.h"
 
 void center(Joueur joueur)
     {

@@ -16,7 +16,7 @@
 
 int main()
 {
-    Joueur joueur = { .nbPokemons = 0 };
+    Joueur joueur = { .nb_supemon = 0 };
     intro();
     outofcombat();
     return 0;

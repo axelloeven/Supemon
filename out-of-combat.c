@@ -26,7 +26,7 @@ int outofcombat()
     printf("What do you want to do ?\n");
     int choice;
     scanf("%d", &choice);
-    printf("You chose %s !\n", choice == 1 ? "Into the wild" : choice == 2 ? "In the shop" : choice == 3 ? "In the Supémon Center" : "Leave the game");
+    printf("You chose %s !\n", choice == 1 ? "Into the wild" : choice == 2 ? "In the shop" : choice == 3 ? "In the Supémon Center" : "Leave the game");//tempo
     if (choice == 1)
     {
 
