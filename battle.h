@@ -11,7 +11,7 @@
 void afficherPokemon(Pokemon p);
 void attack(Pokemon *enemy, Pokemon *monPokemon);
 void item(void);
-void run(Pokemon enemy, Pokemon monPokemon);
+void run(Pokemon enemy, Pokemon monPokemon, Joueur *joueur);
 int battle(Joueur *joueur);
 
 #endif //BATTLE_H

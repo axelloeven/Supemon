@@ -14,7 +14,7 @@
 int outofcombat(Joueur *joueur)
 {
     printf("You are now out of combat.\n");
-    printf("You can now explore the world and catch Supémon.\n");
+    printf("You can now explore the world and catch Sup%cmon.\n", 130);
     printf("Press any key to continue...\n");
     char c;
     scanf("%c", &c);

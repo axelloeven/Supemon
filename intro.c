@@ -10,16 +10,15 @@
 #include <unistd.h>
 #include "supemon.h"
 
-
-int intro()
+void intro(Joueur *joueur)
 {
-    printf("Welcome to Supémon !\n");
+    printf("Welcome to Sup%cmon !\n", 130);
     sleep(1);
-    printf("You are about to enter a world full of Supémon, creatures that you can catch and train.\n");
+    printf("You are about to enter a world full of Sup%cmon, creatures that you can catch and train.\n", 130);
     sleep(1);
     printf("You will have to explore the world to find them and catch them.\n");
     sleep(1);
-    printf("You will also have to train them to become the best Supémon trainer in the world.\n");
+    printf("You will also have to train them to become the best Sup%cmon trainer in the world.\n", 130);
     sleep(1);
     printf("Are you ready to start your adventure ?\n");
     printf("Press any key to continue...\n");
@@ -30,26 +29,39 @@ int intro()
     scanf("%s", name);
     printf("Nice to meet you, %s !\n", name);
     sleep(1);
-    printf("Now, choose your first Supémon !\n");
+    printf("Now, choose your first Sup%cmon !\n", 130);
     sleep(1);
-    printf("Here are three Supémon you can choose from :\n");
+    printf("Here are three Sup%cmon you can choose from :\n", 130);
     sleep(1);
     printf("1. Supmander\n");
     printf("2. Supasaur\n");
     printf("3. Supirtle\n");
-    sleep(1);
-    printf("Which one do you want to choose ?\n");
-    int choicesup;
-    scanf("%d", &choicesup);
-    printf("Wow ! You chose %s !\n", choicesup == 1 ? "Supmander" : choicesup == 2 ? "Supasaur" : "Supirtle");
-    sleep(1);
-    printf("What a great choice !\n");
-    sleep(1);
-    printf("Now, let's start your adventure !\n");
-    sleep(1);
-    printf("Press any key to continue...\n");
-    scanf("%c", &c);
-
-    return 0;
-
+    
+    int choice;
+    scanf("%d", &choice);
+    
+    switch (choice) {
+        case 1:
+            joueur->equipe[0] = Supmander();  // Utilisation de la fonction qui retourne un Pokemon
+            joueur->nb_supemon = 1;
+            printf("You chose Supmander !\n");
+            break;
+        case 2:
+            joueur->equipe[0] = Supasaur();
+            joueur->nb_supemon = 1;
+            printf("You chose Supasaur !\n");
+            break;
+        case 3:
+            joueur->equipe[0] = Supirtle();
+            joueur->nb_supemon = 1;
+            printf("You chose Supirtle !\n");
+            break;
+        default:
+            printf("Invalid choice. You get Supmander by default.\n");
+            joueur->equipe[0] = Supmander();
+            joueur->nb_supemon = 1;
+    }
+    
+    printf("Here's your starter Sup%cmon:\n", 130);
+    afficherPokemon(joueur->equipe[0]);
 }

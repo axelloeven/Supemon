@@ -7,10 +7,11 @@
 
 #include "choicesupemon.h"  // Ajout de l'include pour la définition de Pokemon
 
-// Prototype de la fonction
+// Prototypes des fonctions
 void afficherPokemon(Pokemon p);
-void supmander(void);
-void supasaur(void);
-void supirtle(void);
+Pokemon Supmander(void);  // Changé de void à Pokemon
+Pokemon Supasaur(void);   // Changé de void à Pokemon
+Pokemon Supirtle(void);   // Changé de void à Pokemon
+int getMaxHP(Pokemon p);  // Nouvelle fonction
 
 #endif //SUPEMON_H

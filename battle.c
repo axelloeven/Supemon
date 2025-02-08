@@ -17,7 +17,7 @@ void attack(Pokemon *enemy, Pokemon *monPokemon)
 {
     if (monPokemon->hp <= 0)
     {
-        printf("You can't attack, your Supémon is KO!\n");
+        printf("You can't attack, your Sup%cmon is KO!\n", 130);
         return;
     }
 
@@ -58,13 +58,13 @@ void attack(Pokemon *enemy, Pokemon *monPokemon)
         {
             printf("You used Foliage!\n");
             printf("Your evasion increased by 1!\n");
-            monPokemon->évasion += 1;
+            monPokemon->evasion += 1;
         }
         else if (strcmp(monPokemon->nom, "Supirtle") == 0)
         {
             printf("You used Shell!\n");
             printf("Your defense increased by 1!\n");
-            monPokemon->défense += 1;
+            monPokemon->defense += 1;
         }
 }
 
@@ -76,9 +76,9 @@ void change(Pokemon *monPokemon, Joueur *joueur)
     printf("\n Here your team: \n");
     for (int i = 0; i < joueur->nb_supemon; i++)
         {
-            printf("Supémon %d : %s\n", i + 1, joueur->equipe[i].nom);
+            printf("Sup%cmon %d : %s\n", 130, i + 1, joueur->equipe[i].nom);
         }
-    printf("\n Which Supémon do you want to send out? \n");
+    printf("\n Which Sup%cmon do you want to send out? \n");
     int changer;
     scanf("%d", &changer);
     *monPokemon = joueur->equipe[changer-1];
@@ -90,7 +90,7 @@ void item(void)
     inventory();
 }
 
-void run(Pokemon enemy, Pokemon monPokemon)
+void run(Pokemon enemy, Pokemon monPokemon, Joueur *joueur)
 {
     double success_rate = monPokemon.vitesse/(monPokemon.vitesse + enemy.vitesse);
     double rand_val = (double)rand() / RAND_MAX;
@@ -99,8 +99,10 @@ void run(Pokemon enemy, Pokemon monPokemon)
 
     if (rand_val <= success_rate) {
         printf("You successfully ran away from the battle!\n");
+        outofcombat(joueur);
     } else {
         printf("You failed to run away!\nThe battle continues.\n");
+        // Enemy attacks
     }
 
 
@@ -119,6 +121,7 @@ void capture(Pokemon enemy,int maxhp, Joueur *joueur)
         printf("You can now use it in battle!");
         joueur -> equipe[joueur -> nb_supemon] = enemy;
         joueur -> nb_supemon++;
+        outofcombat(joueur);
     }
     else
     {
@@ -141,9 +144,9 @@ int battle(Joueur *joueur)
             strcpy(enemy.nom, "Supmander");
             enemy.hp = 10;
             enemy.attaque = 1;
-            enemy.défense = 1;
-            enemy.évasion = 1;
-            enemy.précision = 2;
+            enemy.defense = 1;
+            enemy.evasion = 1;
+            enemy.precision = 2;
             enemy.vitesse = 2;
             strcpy(enemy.moves[0], "Scratch deals 3 damages");
             strcpy(enemy.moves[1], "Growl gives 1 attack");
@@ -153,9 +156,9 @@ int battle(Joueur *joueur)
             strcpy(enemy.nom, "Supasaur");
             enemy.hp = 9;
             enemy.attaque = 1;
-            enemy.défense = 1;
-            enemy.évasion = 3;
-            enemy.précision = 2;
+            enemy.defense = 1;
+            enemy.evasion = 3;
+            enemy.precision = 2;
             enemy.vitesse = 2;
             strcpy(enemy.moves[0], "Pound deals 2 damages");
             strcpy(enemy.moves[1], "Foliage gives 1 Evasion");
@@ -165,9 +168,9 @@ int battle(Joueur *joueur)
             strcpy(enemy.nom, "Supirtle");
             enemy.hp = 11;
             enemy.attaque = 1;
-            enemy.défense = 2;
-            enemy.évasion = 2;
-            enemy.précision = 1;
+            enemy.defense = 2;
+            enemy.evasion = 2;
+            enemy.precision = 1;
             enemy.vitesse = 2;
             strcpy(enemy.moves[0], "Pound deals 2 damages");
             strcpy(enemy.moves[1], "Shell gives 1 defense");
@@ -179,7 +182,7 @@ int battle(Joueur *joueur)
     printf("The battle begins!");
     printf("What do you want to do ?");
     printf("1. Move");
-    printf("2. Change Supémon");
+    printf("2. Change Sup%cmon");
     printf("3. Use an item");
     printf("4. Run away");
     printf("5. Capture the enemy");
@@ -196,10 +199,10 @@ int battle(Joueur *joueur)
             item();
             break;
         case 4:
-            run(enemy,monPokemon);
+            run(enemy, monPokemon, joueur);
             break;
         case 5:
-            capture(enemy,maxhp, joueur);
+            capture(enemy, maxhp, joueur);
             break;
         default:
             printf("Invalid choice!");

@@ -11,9 +11,9 @@ typedef struct {
     char nom[50];
     int hp;
     int attaque;
-    int défense;
-    int évasion;
-    double précision;
+    int defense;
+    int evasion;
+    double precision;
     double vitesse;
     char moves[2][50];
 } Pokemon;
