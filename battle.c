@@ -109,27 +109,38 @@ void run(Pokemon enemy, Pokemon monPokemon, Joueur *joueur, const char *playerNa
 
 }
 
-void capture(Pokemon enemy,int maxhp, Joueur *joueur, const char *playerName)
+void capture(Pokemon enemy, int maxhp, Joueur *joueur, const char *playerName)
 {
-    if (joueur -> nb_supemon < MAX)
+    if (joueur->nb_supemon < MAX)
     {
-    printf("You throw a Pokéball!");
-    double catchrate=((enemy.hp- maxhp)/maxhp)-0.5;
-    double capt = (double)rand() / RAND_MAX;
-    if (capt>= catchrate)
-    {
-        printf("You captured the enemy! \n");
-        printf("You can now use it in battle!");
-        joueur -> equipe[joueur -> nb_supemon] = enemy;
-        joueur -> nb_supemon++;
-        saveGame(joueur, playerName);
-        outofcombat(joueur, playerName);
+        printf("You throw a Pok%cball!\n", 130);
+        
+        // Nouvelle formule de capture
+        double catchrate = ((double)(maxhp - enemy.hp) / maxhp) - 0.5;
+        double capt = (double)rand() / RAND_MAX;
+        
+        // Afficher le taux de capture pour debug/feedback
+        printf("Capture chance: %.1f%%\n", catchrate * 100);
+        
+        if (capt <= catchrate)  // Changé de >= à <= car plus les PV sont bas, plus catchrate est élevé
+        {
+            printf("You captured the enemy!\n");
+            printf("You can now use it in battle!\n");
+            joueur->equipe[joueur->nb_supemon] = enemy;
+            joueur->nb_supemon++;
+            saveGame(joueur, playerName);
+            outofcombat(joueur, playerName);
+        }
+        else
+        {
+            printf("The enemy broke free!\n");
+            // Enemy attacks
+        }
     }
     else
     {
-        printf("The enemy broke free!");
+        printf("Your team is full!\n");
     }
-}
 }
 
 
