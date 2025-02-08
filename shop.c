@@ -6,7 +6,7 @@
 #include "shop.h"
 #include "inventory.h"
 #include "out-of-combat.h"
-int shop() {
+int shop(Joueur *joueur) {
     while (1) {
         printf("Welcome to the shop !\n");
         printf("What do you want to do ?\n");
@@ -129,8 +129,8 @@ int shop() {
             break;
 
         case 3:
-            outofcombat();
-
+            outofcombat(joueur);
+            break;
 
         default:
             printf("Invalid choice. Please select 1, 2 or 3.\n");

@@ -5,6 +5,8 @@
 #ifndef OUT_OF_COMBAT_H
 #define OUT_OF_COMBAT_H
 
-int outofcombat();
+#include "choicesupemon.h"  // Ajout pour la définition de Joueur
+
+int outofcombat(Joueur *joueur);
 
 #endif //OUT_OF_COMBAT_H

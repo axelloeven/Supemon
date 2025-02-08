@@ -5,6 +5,8 @@
 #ifndef SHOP_H
 #define SHOP_H
 
-int shop();
+#include "choicesupemon.h"
+
+int shop(Joueur *joueur);
 
 #endif //SHOP_H

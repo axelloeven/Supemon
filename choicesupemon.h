@@ -9,8 +9,6 @@
 
 typedef struct {
     char nom[50];
-    int xp;
-    int lvl;
     int hp;
     int attaque;
     int défense;
@@ -25,8 +23,7 @@ typedef struct {
     int nb_supemon;
 } Joueur;
 
-void capture(Pokemon p, Joueur *joueur);
-void change(Joueur *joueur);
-
+void capture(Pokemon enemy, int maxhp, Joueur *joueur);
+void change(Pokemon *monPokemon, Joueur *joueur);
 
 #endif //CHOICESUPEMON_H

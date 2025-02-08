@@ -9,10 +9,9 @@
 
 // Prototypes des fonctions
 void afficherPokemon(Pokemon p);
-void attack(Pokemon *p);  // Utilisation d'un pointeur pour modifier le Pokemon
-void change(Joueur *joueur);  // Mise à jour du prototype
+void attack(Pokemon *enemy, Pokemon *monPokemon);
 void item(void);
-void run(void);
-int battle(void);
+void run(Pokemon enemy, Pokemon monPokemon);
+int battle(Joueur *joueur);
 
 #endif //BATTLE_H

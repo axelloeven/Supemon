@@ -5,6 +5,8 @@
 #ifndef CENTER_H
 #define CENTER_H
 
-void center();
+#include "choicesupemon.h"
+
+void center(Joueur *joueur);
 
 #endif //CENTER_H

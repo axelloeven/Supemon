@@ -11,7 +11,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int outofcombat()
+int outofcombat(Joueur *joueur)
 {
     printf("You are now out of combat.\n");
     printf("You can now explore the world and catch Supémon.\n");
@@ -26,25 +26,25 @@ int outofcombat()
     printf("What do you want to do ?\n");
     int choice;
     scanf("%d", &choice);
-    printf("You chose %s !\n", choice == 1 ? "Into the wild" : choice == 2 ? "In the shop" : choice == 3 ? "In the Supémon Center" : "Leave the game");//tempo
-    if (choice == 1)
-    {
-
-        battle();
-
-        }
-    if (choice == 2)
-    {
-            shop();
-        }
-    if (choice ==3)
-    {
-            center();
-        }
-    if (choice == 4)
-    {
+    printf("You chose %s !\n", choice == 1 ? "Into the wild" : choice == 2 ? "In the shop" : choice == 3 ? "In the Supémon Center" : "Leave the game");
+    
+    switch (choice) {
+        case 1:
+            battle(joueur);
+            break;
+        case 2:
+            shop(joueur);
+            break;
+        case 3:
+            center(joueur);
+            break;
+        case 4:
             printf("Goodbye !\n");
             exit(0);
-        }
+            break;
+        default:
+            printf("Invalid choice. Please try again.\n");
+            return outofcombat(joueur);
+    }
     return 0;
 }

@@ -13,77 +13,65 @@
 #include "inventory.h"
 
 
-// This function is used to display the information of the supemon.
-void afficherPokemon(Pokemon p) {
-    printf("Nom : %s\n", p.nom);
-    printf("HP : %d\n", p.hp);
-    printf("Attaque : %d\n", p.attaque);
-    printf("Défense : %d\n", p.défense);
-    printf("Évasion : %d\n", p.évasion);
-    printf("Précision : %.2f\n", p.précision);
-    printf("Vitesse : %.2f\n", p.vitesse);
-    printf("Moves : %s, %s\n", p.moves[0], p.moves[1]);
-}
-
-
-void attack(Pokemon enemy,Pokemon monPokemon)
+void attack(Pokemon *enemy, Pokemon *monPokemon)
 {
-    if (monPokemon.hp <= 0)
+    if (monPokemon->hp <= 0)
     {
-        printf("You can't attack, your Supémon is KO!");
+        printf("You can't attack, your Supémon is KO!\n");
+        return;
     }
 
-    printf("Which move do you want to use ?");
-    printf("1. %s", monPokemon.moves[0]);
-    printf("2. %s", monPokemon.moves[1]);
+    printf("Which move do you want to use ?\n");
+    printf("1. %s\n", monPokemon->moves[0]);
+    printf("2. %s\n", monPokemon->moves[1]);
     int choice;
     scanf("%d", &choice);
     if (choice == 1)
     {
-        if (strcmp(monPokemon.nom, "Supmander") == 0)
+        if (strcmp(monPokemon->nom, "Supmander") == 0)
         {
-            printf("You used Scratch!");
-        printf("The enemy lost 3 HP!");
-        enemy.hp -= 3;
+            printf("You used Scratch!\n");
+            printf("The enemy lost 3 HP!\n");
+            enemy->hp -= 3;
         }
-        else if (strcmp(monPokemon.nom, "Supasaur") == 0)
+        else if (strcmp(monPokemon->nom, "Supasaur") == 0)
         {
-            printf("You used Pound!");
-            printf("The enemy lost 2 HP!");
-            enemy.hp -= 2;
+            printf("You used Pound!\n");
+            printf("The enemy lost 2 HP!\n");
+            enemy->hp -= 2;
         }
-        else if (strcmp(monPokemon.nom, "Supirtle") == 0)
+        else if (strcmp(monPokemon->nom, "Supirtle") == 0)
         {
-            printf("You used Pound!");
-            printf("The enemy lost 2 HP!");
-            enemy.hp -= 2;
+            printf("You used Pound!\n");
+            printf("The enemy lost 2 HP!\n");
+            enemy->hp -= 2;
         }
     }
     if (choice == 2)
-        if (strcmp(monPokemon.nom, "Supmander") == 0)
+        if (strcmp(monPokemon->nom, "Supmander") == 0)
         {
             printf("You used Growl!\n");
             printf("Your attack increased by 1!\n");
-            monPokemon.attaque += 1;
+            monPokemon->attaque += 1;
         }
-        else if (strcmp(monPokemon.nom, "Supasaur") == 0)
+        else if (strcmp(monPokemon->nom, "Supasaur") == 0)
         {
             printf("You used Foliage!\n");
             printf("Your evasion increased by 1!\n");
-            monPokemon.évasion += 1;
+            monPokemon->évasion += 1;
         }
-        else if (strcmp(monPokemon.nom, "Supirtle") == 0)
+        else if (strcmp(monPokemon->nom, "Supirtle") == 0)
         {
             printf("You used Shell!\n");
             printf("Your defense increased by 1!\n");
-            monPokemon.défense += 1;
+            monPokemon->défense += 1;
         }
 }
 
 
-void change (Pokemon monPokemon, Joueur *joueur)
+void change(Pokemon *monPokemon, Joueur *joueur)
 {
-    printf("You Currently have %s out. \n",monPokemon.nom);
+    printf("You Currently have %s out. \n", monPokemon->nom);
 
     printf("\n Here your team: \n");
     for (int i = 0; i < joueur->nb_supemon; i++)
@@ -93,10 +81,10 @@ void change (Pokemon monPokemon, Joueur *joueur)
     printf("\n Which Supémon do you want to send out? \n");
     int changer;
     scanf("%d", &changer);
-    monPokemon = joueur->equipe[changer-1];
+    *monPokemon = joueur->equipe[changer-1];
 }
 
-void item()
+void item(void)
 {
     printf("You are accessing your inventory...\n");
     inventory();
@@ -199,19 +187,19 @@ int battle(Joueur *joueur)
     scanf("%d", &choice);
     switch (choice) {
         case 1:
-        attack(enemy,monPokemon);
+            attack(&enemy, &monPokemon);
             break;
         case 2:
-        change(monPokemon, joueur);
+            change(&monPokemon, joueur);
             break;
         case 3:
-        item(monPokemon);
+            item();
             break;
         case 4:
-        run(enemy,monPokemon);
+            run(enemy,monPokemon);
             break;
         case 5:
-        capture(enemy,maxhp, joueur);
+            capture(enemy,maxhp, joueur);
             break;
         default:
             printf("Invalid choice!");
