@@ -7,6 +7,6 @@
 
 #include "choicesupemon.h"
 
-void center(Joueur *joueur);
+void center(Joueur *joueur, const char *playerName);
 
 #endif //CENTER_H

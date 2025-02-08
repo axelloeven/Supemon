@@ -5,16 +5,18 @@
 #include <stdlib.h>
 #include "inventory.h"
 
-// Définition des variables globales
-int potion_count = 1;
+// Définition des variables globales avec des valeurs initiales
+int potion_count = 0;
 int super_potion_count = 0;
 int rare_candy_count = 0;
-int supcoins = 1000;
+int supcoins = 1000;  // On commence avec 1000 supcoins
 
 void inventory(void) {
-    printf("Welcome to your inventory !\n");
-    printf("You have %d potions, %d super potions, %d rare candies and %d Supcoins.\n", 
-           potion_count, super_potion_count, rare_candy_count, supcoins);
+    printf("\nInventaire :\n");
+    printf("Potions : %d\n", potion_count);
+    printf("Super Potions : %d\n", super_potion_count);
+    printf("Rare Candy : %d\n", rare_candy_count);
+    printf("Supcoins : %d\n", supcoins);
     
     while (1) {
         printf("What do you want to do ?\n");

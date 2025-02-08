@@ -4,8 +4,8 @@
 
 #ifndef CHOICESUPEMON_H
 #define CHOICESUPEMON_H
+
 #define MAX 6
-#include <stdio.h>
 
 typedef struct {
     char nom[50];
@@ -21,9 +21,10 @@ typedef struct {
 typedef struct {
     Pokemon equipe[MAX];
     int nb_supemon;
+    char playerName[20];
 } Joueur;
 
-void capture(Pokemon enemy, int maxhp, Joueur *joueur);
+void capture(Pokemon enemy, int maxhp, Joueur *joueur, const char *playerName);
 void change(Pokemon *monPokemon, Joueur *joueur);
 
 #endif //CHOICESUPEMON_H

@@ -11,7 +11,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int outofcombat(Joueur *joueur)
+int outofcombat(Joueur *joueur, const char *playerName)
 {
     printf("You are now out of combat.\n");
     printf("You can now explore the world and catch Sup%cmon.\n", 130);
@@ -30,13 +30,13 @@ int outofcombat(Joueur *joueur)
     
     switch (choice) {
         case 1:
-            battle(joueur);
+            battle(joueur, playerName);
             break;
         case 2:
-            shop(joueur);
+            shop(joueur, playerName);
             break;
         case 3:
-            center(joueur);
+            center(joueur, playerName);
             break;
         case 4:
             printf("Goodbye !\n");
@@ -44,7 +44,7 @@ int outofcombat(Joueur *joueur)
             break;
         default:
             printf("Invalid choice. Please try again.\n");
-            return outofcombat(joueur);
+            return outofcombat(joueur, playerName);
     }
     return 0;
 }

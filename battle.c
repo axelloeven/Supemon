@@ -11,6 +11,7 @@
 #include "supemon.h"
 #include "out-of-combat.h"
 #include "inventory.h"
+#include "save.h"
 
 
 void attack(Pokemon *enemy, Pokemon *monPokemon)
@@ -90,7 +91,7 @@ void item(void)
     inventory();
 }
 
-void run(Pokemon enemy, Pokemon monPokemon, Joueur *joueur)
+void run(Pokemon enemy, Pokemon monPokemon, Joueur *joueur, const char *playerName)
 {
     double success_rate = monPokemon.vitesse/(monPokemon.vitesse + enemy.vitesse);
     double rand_val = (double)rand() / RAND_MAX;
@@ -99,7 +100,7 @@ void run(Pokemon enemy, Pokemon monPokemon, Joueur *joueur)
 
     if (rand_val <= success_rate) {
         printf("You successfully ran away from the battle!\n");
-        outofcombat(joueur);
+        outofcombat(joueur, playerName);
     } else {
         printf("You failed to run away!\nThe battle continues.\n");
         // Enemy attacks
@@ -108,7 +109,7 @@ void run(Pokemon enemy, Pokemon monPokemon, Joueur *joueur)
 
 }
 
-void capture(Pokemon enemy,int maxhp, Joueur *joueur)
+void capture(Pokemon enemy,int maxhp, Joueur *joueur, const char *playerName)
 {
     if (joueur -> nb_supemon < MAX)
     {
@@ -121,7 +122,8 @@ void capture(Pokemon enemy,int maxhp, Joueur *joueur)
         printf("You can now use it in battle!");
         joueur -> equipe[joueur -> nb_supemon] = enemy;
         joueur -> nb_supemon++;
-        outofcombat(joueur);
+        saveGame(joueur, playerName);
+        outofcombat(joueur, playerName);
     }
     else
     {
@@ -131,7 +133,7 @@ void capture(Pokemon enemy,int maxhp, Joueur *joueur)
 }
 
 
-int battle(Joueur *joueur)
+int battle(Joueur *joueur, const char *playerName)
 {
     printf("You are walking...");
     printf("A wild enemy appears!");
@@ -199,10 +201,10 @@ int battle(Joueur *joueur)
             item();
             break;
         case 4:
-            run(enemy, monPokemon, joueur);
+            run(enemy, monPokemon, joueur, playerName);
             break;
         case 5:
-            capture(enemy, maxhp, joueur);
+            capture(enemy, maxhp, joueur, playerName);
             break;
         default:
             printf("Invalid choice!");

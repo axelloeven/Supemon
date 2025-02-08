@@ -15,6 +15,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/axelo/Documents/GitHub/Supemon/inventory.c" "CMakeFiles/Supemon.dir/inventory.c.obj" "gcc" "CMakeFiles/Supemon.dir/inventory.c.obj.d"
   "C:/Users/axelo/Documents/GitHub/Supemon/main.c" "CMakeFiles/Supemon.dir/main.c.obj" "gcc" "CMakeFiles/Supemon.dir/main.c.obj.d"
   "C:/Users/axelo/Documents/GitHub/Supemon/out-of-combat.c" "CMakeFiles/Supemon.dir/out-of-combat.c.obj" "gcc" "CMakeFiles/Supemon.dir/out-of-combat.c.obj.d"
+  "C:/Users/axelo/Documents/GitHub/Supemon/save.c" "CMakeFiles/Supemon.dir/save.c.obj" "gcc" "CMakeFiles/Supemon.dir/save.c.obj.d"
   "C:/Users/axelo/Documents/GitHub/Supemon/shop.c" "CMakeFiles/Supemon.dir/shop.c.obj" "gcc" "CMakeFiles/Supemon.dir/shop.c.obj.d"
   "C:/Users/axelo/Documents/GitHub/Supemon/supemon.c" "CMakeFiles/Supemon.dir/supemon.c.obj" "gcc" "CMakeFiles/Supemon.dir/supemon.c.obj.d"
   )

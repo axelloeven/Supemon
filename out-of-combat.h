@@ -7,6 +7,6 @@
 
 #include "choicesupemon.h"  // Ajout pour la définition de Joueur
 
-int outofcombat(Joueur *joueur);
+int outofcombat(Joueur *joueur, const char *playerName);  // Ajout du paramètre playerName
 
 #endif //OUT_OF_COMBAT_H

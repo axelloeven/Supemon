@@ -8,7 +8,7 @@
 #include "choicesupemon.h"
 #include "out-of-combat.h"
 
-void center(Joueur *joueur)
+void center(Joueur *joueur, const char *playerName)
 {
     printf("Welcome to the Sup%cmon Center !\n", 130);
     printf("What do you want to do ?\n");
@@ -24,7 +24,7 @@ void center(Joueur *joueur)
         {
             printf("Sup%cmon %d : %s\n", 130, i + 1, joueur->equipe[i].nom);
         }
-        center(joueur);
+        center(joueur, playerName);
     }
     if (choice == 2)
     {
@@ -33,10 +33,10 @@ void center(Joueur *joueur)
         {
             joueur->equipe[i].hp = getMaxHP(joueur->equipe[i]);
         }
-        center(joueur);
+        center(joueur, playerName);
     }
     if (choice == 3)
     {
-        outofcombat(joueur);
+        outofcombat(joueur, playerName);
     }
 }

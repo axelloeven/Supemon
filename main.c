@@ -18,6 +18,5 @@ int main()
 {
     Joueur joueur = { .nb_supemon = 0 };
     intro(&joueur);
-    outofcombat(&joueur);
     return 0;
 }

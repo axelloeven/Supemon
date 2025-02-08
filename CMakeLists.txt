@@ -15,4 +15,5 @@ add_executable(Supemon
         supemon.c
         choicesupemon.c
         inventory.c
+        save.c
 )

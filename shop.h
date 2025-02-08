@@ -7,6 +7,6 @@
 
 #include "choicesupemon.h"
 
-int shop(Joueur *joueur);
+int shop(Joueur *joueur, const char *playerName);
 
 #endif //SHOP_H

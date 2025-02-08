@@ -296,6 +296,30 @@ out-of-combat.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Supemon.dir\build.make CMakeFiles/Supemon.dir/out-of-combat.c.s
 .PHONY : out-of-combat.c.s
 
+save.obj: save.c.obj
+.PHONY : save.obj
+
+# target to build an object file
+save.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Supemon.dir\build.make CMakeFiles/Supemon.dir/save.c.obj
+.PHONY : save.c.obj
+
+save.i: save.c.i
+.PHONY : save.i
+
+# target to preprocess a source file
+save.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Supemon.dir\build.make CMakeFiles/Supemon.dir/save.c.i
+.PHONY : save.c.i
+
+save.s: save.c.s
+.PHONY : save.s
+
+# target to generate assembly for a file
+save.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Supemon.dir\build.make CMakeFiles/Supemon.dir/save.c.s
+.PHONY : save.c.s
+
 shop.obj: shop.c.obj
 .PHONY : shop.obj
 
@@ -374,6 +398,9 @@ help:
 	@echo ... out-of-combat.obj
 	@echo ... out-of-combat.i
 	@echo ... out-of-combat.s
+	@echo ... save.obj
+	@echo ... save.i
+	@echo ... save.s
 	@echo ... shop.obj
 	@echo ... shop.i
 	@echo ... shop.s

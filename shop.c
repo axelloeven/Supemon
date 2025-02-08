@@ -6,7 +6,9 @@
 #include "shop.h"
 #include "inventory.h"
 #include "out-of-combat.h"
-int shop(Joueur *joueur) {
+#include "save.h"
+
+int shop(Joueur *joueur, const char *playerName) {
     while (1) {
         printf("Welcome to the shop !\n");
         printf("What do you want to do ?\n");
@@ -42,8 +44,9 @@ int shop(Joueur *joueur) {
                 if (supcoins >= 100) {
                     supcoins -= 100;
                     potion_count++;
-                    printf("You bought a potion !\n");
+                    printf("You bought a potion ! You have %d potions\n", potion_count);
                     printf("You have %d Supcoins left\n", supcoins);
+                    saveGame(joueur, playerName);
                 } else {
                     printf("You don't have enough Supcoins !\n");
                 }
@@ -52,8 +55,9 @@ int shop(Joueur *joueur) {
                 if (supcoins >= 300) {
                     supcoins -= 300;
                     super_potion_count++;
-                    printf("You bought a super potion !\n");
+                    printf("You bought a super potion ! You have %d super potions\n", super_potion_count);
                     printf("You have %d Supcoins left\n", supcoins);
+                    saveGame(joueur, playerName);
                 } else {
                     printf("You don't have enough Supcoins !\n");
                 }
@@ -62,8 +66,9 @@ int shop(Joueur *joueur) {
                 if (supcoins >= 700) {
                     supcoins -= 700;
                     rare_candy_count++;
-                    printf("You bought a rare candy !\n");
+                    printf("You bought a rare candy ! You have %d rare candy\n ", rare_candy_count);
                     printf("You have %d Supcoins left\n", supcoins);
+                    saveGame(joueur, playerName);
                 } else {
                     printf("You don't have enough Supcoins !\n");
                 }
@@ -129,7 +134,7 @@ int shop(Joueur *joueur) {
             break;
 
         case 3:
-            outofcombat(joueur);
+            outofcombat(joueur, playerName);
             break;
 
         default:

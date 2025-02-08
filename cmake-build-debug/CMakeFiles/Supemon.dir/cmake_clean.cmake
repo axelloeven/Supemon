@@ -13,6 +13,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Supemon.dir/main.c.obj.d"
   "CMakeFiles/Supemon.dir/out-of-combat.c.obj"
   "CMakeFiles/Supemon.dir/out-of-combat.c.obj.d"
+  "CMakeFiles/Supemon.dir/save.c.obj"
+  "CMakeFiles/Supemon.dir/save.c.obj.d"
   "CMakeFiles/Supemon.dir/shop.c.obj"
   "CMakeFiles/Supemon.dir/shop.c.obj.d"
   "CMakeFiles/Supemon.dir/supemon.c.obj"

@@ -9,6 +9,8 @@
 #include <windows.h>
 #include <unistd.h>
 #include "supemon.h"
+#include "save.h"
+#include <string.h>
 
 void intro(Joueur *joueur)
 {
@@ -25,9 +27,18 @@ void intro(Joueur *joueur)
     char c;
     scanf("%c", &c);
     printf("First, how do you want me to call you ?\n");
-    char name[20];
-    scanf("%s", name);
-    printf("Nice to meet you, %s !\n", name);
+    char playerName[20];
+    scanf("%s", playerName);
+    strcpy(joueur->playerName, playerName);  // Sauvegarder le nom dans la structure
+    
+    // Essayer de charger une sauvegarde existante
+    if (loadGame(joueur, playerName)) {
+        printf("Sauvegarde trouvée ! Bienvenue à nouveau, %s !\n", playerName);
+        outofcombat(joueur, joueur->playerName);
+        return;
+    }
+    
+    printf("Nice to meet you, %s !\n", playerName);
     sleep(1);
     printf("Now, choose your first Sup%cmon !\n", 130);
     sleep(1);
@@ -64,4 +75,8 @@ void intro(Joueur *joueur)
     
     printf("Here's your starter Sup%cmon:\n", 130);
     afficherPokemon(joueur->equipe[0]);
+    
+    // Sauvegarder après avoir choisi le premier Pokémon
+    saveGame(joueur, joueur->playerName);
+    outofcombat(joueur, joueur->playerName);
 }

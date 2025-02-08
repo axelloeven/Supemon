@@ -31,6 +31,7 @@ CMakeFiles/Supemon.dir/battle.c.obj
  C:/Users/axelo/Documents/GitHub/Supemon/intro.h
  C:/Users/axelo/Documents/GitHub/Supemon/inventory.h
  C:/Users/axelo/Documents/GitHub/Supemon/out-of-combat.h
+ C:/Users/axelo/Documents/GitHub/Supemon/save.h
  C:/Users/axelo/Documents/GitHub/Supemon/supemon.h
 
 CMakeFiles/Supemon.dir/center.c.obj
@@ -88,6 +89,7 @@ CMakeFiles/Supemon.dir/choicesupemon.c.obj
  C:/Users/axelo/Documents/GitHub/Supemon/center.h
  C:/Users/axelo/Documents/GitHub/Supemon/choicesupemon.h
  C:/Users/axelo/Documents/GitHub/Supemon/intro.h
+ C:/Users/axelo/Documents/GitHub/Supemon/out-of-combat.h
  C:/Users/axelo/Documents/GitHub/Supemon/supemon.h
 
 CMakeFiles/Supemon.dir/intro.c.obj
@@ -368,6 +370,8 @@ CMakeFiles/Supemon.dir/intro.c.obj
  C:/Users/axelo/Documents/GitHub/Supemon/choicesupemon.h
  C:/Users/axelo/Documents/GitHub/Supemon/intro.h
  C:/Users/axelo/Documents/GitHub/Supemon/main.h
+ C:/Users/axelo/Documents/GitHub/Supemon/out-of-combat.h
+ C:/Users/axelo/Documents/GitHub/Supemon/save.h
  C:/Users/axelo/Documents/GitHub/Supemon/supemon.h
 
 CMakeFiles/Supemon.dir/inventory.c.obj
@@ -459,6 +463,26 @@ CMakeFiles/Supemon.dir/out-of-combat.c.obj
  C:/Users/axelo/Documents/GitHub/Supemon/out-of-combat.h
  C:/Users/axelo/Documents/GitHub/Supemon/shop.h
 
+CMakeFiles/Supemon.dir/save.c.obj
+ C:/Users/axelo/Documents/GitHub/Supemon/save.c
+ C:/Users/axelo/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/_mingw.h
+ C:/Users/axelo/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/_mingw_mac.h
+ C:/Users/axelo/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/_mingw_off_t.h
+ C:/Users/axelo/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/_mingw_secapi.h
+ C:/Users/axelo/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/corecrt.h
+ C:/Users/axelo/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/corecrt_stdio_config.h
+ C:/Users/axelo/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/crtdefs.h
+ C:/Users/axelo/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/sdks/_mingw_ddk.h
+ C:/Users/axelo/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/sec_api/stdio_s.h
+ C:/Users/axelo/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/sec_api/string_s.h
+ C:/Users/axelo/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/stdio.h
+ C:/Users/axelo/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/string.h
+ C:/Users/axelo/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/swprintf.inl
+ C:/Users/axelo/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/vadefs.h
+ C:/Users/axelo/Documents/GitHub/Supemon/choicesupemon.h
+ C:/Users/axelo/Documents/GitHub/Supemon/inventory.h
+ C:/Users/axelo/Documents/GitHub/Supemon/save.h
+
 CMakeFiles/Supemon.dir/shop.c.obj
  C:/Users/axelo/Documents/GitHub/Supemon/shop.c
  C:/Users/axelo/AppData/Local/Programs/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/limits.h
@@ -485,6 +509,7 @@ CMakeFiles/Supemon.dir/shop.c.obj
  C:/Users/axelo/Documents/GitHub/Supemon/choicesupemon.h
  C:/Users/axelo/Documents/GitHub/Supemon/inventory.h
  C:/Users/axelo/Documents/GitHub/Supemon/out-of-combat.h
+ C:/Users/axelo/Documents/GitHub/Supemon/save.h
  C:/Users/axelo/Documents/GitHub/Supemon/shop.h
 
 CMakeFiles/Supemon.dir/supemon.c.obj
