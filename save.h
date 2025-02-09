@@ -9,6 +9,6 @@
 
 // Prototypes des fonctions
 void saveGame(Joueur *joueur, const char *playerName);
-int loadGame(Joueur *joueur, char *playerName);
+int loadGame(Joueur *joueur, const char *playerName);
 
 #endif //SAVE_H

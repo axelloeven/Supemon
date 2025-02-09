@@ -9,6 +9,8 @@
 
 typedef struct {
     char nom[50];
+    int lvl;
+    int xp;
     int hp;
     int attaque;
     int defense;

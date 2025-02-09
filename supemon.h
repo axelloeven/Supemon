@@ -8,10 +8,13 @@
 #include "choicesupemon.h"  // Ajout de l'include pour la définition de Pokemon
 
 // Prototypes des fonctions
-void afficherPokemon(Pokemon p);
+void afficherPokemon(Pokemon p);  // Déclaration unique du prototype
 Pokemon Supmander(void);  // Changé de void à Pokemon
 Pokemon Supasaur(void);   // Changé de void à Pokemon
 Pokemon Supirtle(void);   // Changé de void à Pokemon
 int getMaxHP(Pokemon p);  // Nouvelle fonction
+int lvlupstat(Pokemon *p);  // Nouvelle fonction
+int xpRequis(int level);  // Nouvelle fonction
+int lvlup(Pokemon *p, Joueur *joueur, const char *playerName);  // Modification de la signature
 
 #endif //SUPEMON_H

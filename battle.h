@@ -7,10 +7,12 @@
 
 #include "choicesupemon.h"
 
-// Prototypes des fonctions
+
+void dodge(Pokemon *monPokemon, Pokemon *enemy);
 void afficherPokemon(Pokemon p);
 void attack(Pokemon *enemy, Pokemon *monPokemon);
 void item(void);
+void change(Pokemon *monPokemon, Joueur *joueur);
 void run(Pokemon enemy, Pokemon monPokemon, Joueur *joueur, const char *playerName);
 int battle(Joueur *joueur, const char *playerName);
 

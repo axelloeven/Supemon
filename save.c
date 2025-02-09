@@ -17,7 +17,6 @@ void saveGame(Joueur *joueur, const char *playerName) {
         return;
     }
     
-    // Écrire en format JSON
     fprintf(file, "{\n");
     fprintf(file, "  \"playerName\": \"%s\",\n", playerName);
     fprintf(file, "  \"inventory\": {\n");
@@ -39,6 +38,8 @@ void saveGame(Joueur *joueur, const char *playerName) {
         fprintf(file, "        \"evasion\": %d,\n", joueur->equipe[i].evasion);
         fprintf(file, "        \"precision\": %.2f,\n", joueur->equipe[i].precision);
         fprintf(file, "        \"speed\": %.2f,\n", joueur->equipe[i].vitesse);
+        fprintf(file, "        \"level\": %d,\n", joueur->equipe[i].lvl);
+        fprintf(file, "        \"xp\": %d,\n", joueur->equipe[i].xp);
         fprintf(file, "        \"moves\": [\"%s\", \"%s\"]\n", 
                 joueur->equipe[i].moves[0], joueur->equipe[i].moves[1]);
         fprintf(file, "      }%s\n", i < joueur->nb_supemon - 1 ? "," : "");
@@ -52,7 +53,7 @@ void saveGame(Joueur *joueur, const char *playerName) {
     printf("Partie sauvegardée avec succès !\n");
 }
 
-int loadGame(Joueur *joueur, char *playerName) {
+int loadGame(Joueur *joueur, const char *playerName) {
     char filename[64];
     sprintf(filename, "save_%s.json", playerName);
     
@@ -61,7 +62,7 @@ int loadGame(Joueur *joueur, char *playerName) {
         printf("Aucune sauvegarde trouvée pour ce joueur.\n");
         return 0;
     }
-    
+
     // Buffer pour lire le fichier ligne par ligne
     char line[256];
     char value[256];
@@ -89,7 +90,44 @@ int loadGame(Joueur *joueur, char *playerName) {
             int index = joueur->nb_supemon - 1;
             sscanf(line, "        \"name\": \"%[^\"]\"", joueur->equipe[index].nom);
         }
-        // ... ajouter d'autres lectures de propriétés si nécessaire
+        else if (strstr(line, "\"hp\":")) {
+            int index = joueur->nb_supemon - 1;
+            sscanf(line, "        \"hp\": %d,", &joueur->equipe[index].hp);
+        }
+        else if (strstr(line, "\"attack\":")) {
+            int index = joueur->nb_supemon - 1;
+            sscanf(line, "        \"attack\": %d,", &joueur->equipe[index].attaque);
+        }
+        else if (strstr(line, "\"defense\":")) {
+            int index = joueur->nb_supemon - 1;
+            sscanf(line, "        \"defense\": %d,", &joueur->equipe[index].defense);
+        }
+        else if (strstr(line, "\"evasion\":")) {
+            int index = joueur->nb_supemon - 1;
+            sscanf(line, "        \"evasion\": %d,", &joueur->equipe[index].evasion);
+        }
+        else if (strstr(line, "\"precision\":")) {
+            int index = joueur->nb_supemon - 1;
+            sscanf(line, "        \"precision\": %lf,", &joueur->equipe[index].precision);
+        }
+        else if (strstr(line, "\"speed\":")) {
+            int index = joueur->nb_supemon - 1;
+            sscanf(line, "        \"speed\": %lf,", &joueur->equipe[index].vitesse);
+        }
+        else if (strstr(line, "\"level\":")) {
+            int index = joueur->nb_supemon - 1;
+            sscanf(line, "        \"level\": %d,", &joueur->equipe[index].lvl);
+        }
+        else if (strstr(line, "\"xp\":")) {
+            int index = joueur->nb_supemon - 1;
+            sscanf(line, "        \"xp\": %d,", &joueur->equipe[index].xp);
+        }
+        else if (strstr(line, "\"moves\":")) {
+            int index = joueur->nb_supemon - 1;
+            sscanf(line, "        \"moves\": [\"%[^\"]\", \"%[^\"]\"", 
+                  joueur->equipe[index].moves[0], 
+                  joueur->equipe[index].moves[1]);
+        }
     }
     
     fclose(file);

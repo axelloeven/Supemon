@@ -16,6 +16,7 @@ CMakeFiles/Supemon.dir/battle.c.obj: C:/Users/axelo/Documents/GitHub/Supemon/bat
   C:/Users/axelo/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/errno.h \
   C:/Users/axelo/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/limits.h \
   C:/Users/axelo/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/malloc.h \
+  C:/Users/axelo/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/math.h \
   C:/Users/axelo/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/sdks/_mingw_ddk.h \
   C:/Users/axelo/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/sec_api/stdio_s.h \
   C:/Users/axelo/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/sec_api/stdlib_s.h \
@@ -27,11 +28,9 @@ CMakeFiles/Supemon.dir/battle.c.obj: C:/Users/axelo/Documents/GitHub/Supemon/bat
   C:/Users/axelo/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/vadefs.h \
   C:/Users/axelo/Documents/GitHub/Supemon/battle.h \
   C:/Users/axelo/Documents/GitHub/Supemon/choicesupemon.h \
-  C:/Users/axelo/Documents/GitHub/Supemon/intro.h \
   C:/Users/axelo/Documents/GitHub/Supemon/inventory.h \
   C:/Users/axelo/Documents/GitHub/Supemon/out-of-combat.h \
-  C:/Users/axelo/Documents/GitHub/Supemon/save.h \
-  C:/Users/axelo/Documents/GitHub/Supemon/supemon.h
+  C:/Users/axelo/Documents/GitHub/Supemon/save.h
 
 CMakeFiles/Supemon.dir/center.c.obj: C:/Users/axelo/Documents/GitHub/Supemon/center.c \
   C:/Users/axelo/AppData/Local/Programs/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/limits.h \
@@ -518,6 +517,7 @@ CMakeFiles/Supemon.dir/supemon.c.obj: C:/Users/axelo/Documents/GitHub/Supemon/su
   C:/Users/axelo/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/errno.h \
   C:/Users/axelo/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/limits.h \
   C:/Users/axelo/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/malloc.h \
+  C:/Users/axelo/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/math.h \
   C:/Users/axelo/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/sdks/_mingw_ddk.h \
   C:/Users/axelo/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/sec_api/stdio_s.h \
   C:/Users/axelo/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/sec_api/stdlib_s.h \
@@ -527,6 +527,8 @@ CMakeFiles/Supemon.dir/supemon.c.obj: C:/Users/axelo/Documents/GitHub/Supemon/su
   C:/Users/axelo/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/string.h \
   C:/Users/axelo/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/swprintf.inl \
   C:/Users/axelo/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/vadefs.h \
+  C:/Users/axelo/Documents/GitHub/Supemon/choicesupemon.h \
+  C:/Users/axelo/Documents/GitHub/Supemon/save.h \
   C:/Users/axelo/Documents/GitHub/Supemon/choicesupemon.h \
   C:/Users/axelo/Documents/GitHub/Supemon/supemon.h
 
@@ -609,6 +611,12 @@ C:/Users/axelo/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include
 
 C:/Users/axelo/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/malloc.h:
 
+C:/Users/axelo/Documents/GitHub/Supemon/center.h:
+
+C:/Users/axelo/AppData/Local/Programs/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/tsxldtrkintrin.h:
+
+C:/Users/axelo/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/math.h:
+
 C:/Users/axelo/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/psdk_inc/_ip_types.h:
 
 C:/Users/axelo/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/sec_api/stdio_s.h:
@@ -643,10 +651,6 @@ C:/Users/axelo/AppData/Local/Programs/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32
 
 C:/Users/axelo/Documents/GitHub/Supemon/choicesupemon.h:
 
-C:/Users/axelo/AppData/Local/Programs/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/keylockerintrin.h:
-
-C:/Users/axelo/Documents/GitHub/Supemon/intro.h:
-
 C:/Users/axelo/AppData/Local/Programs/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/ammintrin.h:
 
 C:/Users/axelo/Documents/GitHub/Supemon/inventory.h:
@@ -669,7 +673,9 @@ C:/Users/axelo/AppData/Local/Programs/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32
 
 C:/Users/axelo/Documents/GitHub/Supemon/center.c:
 
-C:/Users/axelo/Documents/GitHub/Supemon/center.h:
+C:/Users/axelo/AppData/Local/Programs/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/keylockerintrin.h:
+
+C:/Users/axelo/Documents/GitHub/Supemon/intro.h:
 
 C:/Users/axelo/Documents/GitHub/Supemon/intro.c:
 
@@ -844,8 +850,6 @@ C:/Users/axelo/AppData/Local/Programs/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32
 C:/Users/axelo/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/fibersapi.h:
 
 C:/Users/axelo/AppData/Local/Programs/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/tbmintrin.h:
-
-C:/Users/axelo/AppData/Local/Programs/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/tsxldtrkintrin.h:
 
 C:/Users/axelo/AppData/Local/Programs/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/uintrintrin.h:
 
