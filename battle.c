@@ -188,9 +188,12 @@ void tour_adversaire(Pokemon *monPokemon, Pokemon *enemy, Joueur *joueur, const 
             printf("The enemy's evasion increased by 1!\n");
             enemy->evasion += 1;
         } else if (strcmp(enemy->nom, "Supirtle") == 0) {
-            printf("The enemy used Shell!\n");
-            printf("The enemy's defense increased by 1!\n");
-            enemy->defense += 1;
+            if (monPokemon-> attaque = enemy->defense+1 )
+                move_choice = 0;
+            else if (monPokemon-> attaque = enemy->defense-1 )
+                printf("The enemy used Shell!\n");
+                printf("The enemy's defense increased by 1!\n");
+                enemy->defense += 1;
         }
     }
 }
@@ -302,7 +305,7 @@ int battle(Joueur *joueur, const char *playerName)
 
     int game_over = 0;
     while (!game_over) {
-        // Vérifier si le Pokémon est KO avant chaque tour
+
         if (monPokemon->hp <= 0) {
             if (tousSupemonsKO(joueur)) {
                 printf("All your Supémons are KO! You lost the battle.\n");
