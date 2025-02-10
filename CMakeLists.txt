@@ -14,4 +14,5 @@ add_executable(Supemon
     center.c
     supemon.c
     save.c
+        inventory.c
 )

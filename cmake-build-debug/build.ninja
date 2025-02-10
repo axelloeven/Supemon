@@ -98,8 +98,8 @@ build CMakeFiles/Supemon.dir/supemon.c.obj: C_COMPILER__Supemon_unscanned_Debug 
   OBJECT_DIR = CMakeFiles\Supemon.dir
   OBJECT_FILE_DIR = CMakeFiles\Supemon.dir
 
-build CMakeFiles/Supemon.dir/choicesupemon.c.obj: C_COMPILER__Supemon_unscanned_Debug C$:/Users/axelo/Documents/GitHub/Supemon/choicesupemon.c || cmake_object_order_depends_target_Supemon
-  DEP_FILE = CMakeFiles\Supemon.dir\choicesupemon.c.obj.d
+build CMakeFiles/Supemon.dir/save.c.obj: C_COMPILER__Supemon_unscanned_Debug C$:/Users/axelo/Documents/GitHub/Supemon/save.c || cmake_object_order_depends_target_Supemon
+  DEP_FILE = CMakeFiles\Supemon.dir\save.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
   INCLUDES = -IC:/Users/axelo/Documents/GitHub/Supemon/.
   OBJECT_DIR = CMakeFiles\Supemon.dir
@@ -120,7 +120,7 @@ build CMakeFiles/Supemon.dir/inventory.c.obj: C_COMPILER__Supemon_unscanned_Debu
 #############################################
 # Link the executable Supemon.exe
 
-build Supemon.exe: C_EXECUTABLE_LINKER__Supemon_Debug CMakeFiles/Supemon.dir/intro.c.obj CMakeFiles/Supemon.dir/main.c.obj CMakeFiles/Supemon.dir/out-of-combat.c.obj CMakeFiles/Supemon.dir/battle.c.obj CMakeFiles/Supemon.dir/shop.c.obj CMakeFiles/Supemon.dir/center.c.obj CMakeFiles/Supemon.dir/supemon.c.obj CMakeFiles/Supemon.dir/choicesupemon.c.obj CMakeFiles/Supemon.dir/inventory.c.obj
+build Supemon.exe: C_EXECUTABLE_LINKER__Supemon_Debug CMakeFiles/Supemon.dir/intro.c.obj CMakeFiles/Supemon.dir/main.c.obj CMakeFiles/Supemon.dir/out-of-combat.c.obj CMakeFiles/Supemon.dir/battle.c.obj CMakeFiles/Supemon.dir/shop.c.obj CMakeFiles/Supemon.dir/center.c.obj CMakeFiles/Supemon.dir/supemon.c.obj CMakeFiles/Supemon.dir/save.c.obj CMakeFiles/Supemon.dir/inventory.c.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Supemon.dir
