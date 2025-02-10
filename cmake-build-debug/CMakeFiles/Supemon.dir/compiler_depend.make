@@ -26,6 +26,8 @@ CMakeFiles/Supemon.dir/battle.c.obj: C:/Users/axelo/Documents/GitHub/Supemon/bat
   C:/Users/axelo/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/string.h \
   C:/Users/axelo/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/swprintf.inl \
   C:/Users/axelo/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/vadefs.h \
+  C:/Users/axelo/Documents/GitHub/Supemon/choicesupemon.h \
+  C:/Users/axelo/Documents/GitHub/Supemon/supemon.h \
   C:/Users/axelo/Documents/GitHub/Supemon/battle.h \
   C:/Users/axelo/Documents/GitHub/Supemon/choicesupemon.h \
   C:/Users/axelo/Documents/GitHub/Supemon/inventory.h \
@@ -54,9 +56,12 @@ CMakeFiles/Supemon.dir/center.c.obj: C:/Users/axelo/Documents/GitHub/Supemon/cen
   C:/Users/axelo/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/stdlib.h \
   C:/Users/axelo/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/swprintf.inl \
   C:/Users/axelo/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/vadefs.h \
+  C:/Users/axelo/Documents/GitHub/Supemon/choicesupemon.h \
+  C:/Users/axelo/Documents/GitHub/Supemon/supemon.h \
   C:/Users/axelo/Documents/GitHub/Supemon/center.h \
   C:/Users/axelo/Documents/GitHub/Supemon/choicesupemon.h \
-  C:/Users/axelo/Documents/GitHub/Supemon/out-of-combat.h
+  C:/Users/axelo/Documents/GitHub/Supemon/out-of-combat.h \
+  C:/Users/axelo/Documents/GitHub/Supemon/save.h
 
 CMakeFiles/Supemon.dir/choicesupemon.c.obj: C:/Users/axelo/Documents/GitHub/Supemon/choicesupemon.c \
   C:/Users/axelo/AppData/Local/Programs/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/limits.h \
@@ -643,13 +648,13 @@ C:/Users/axelo/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include
 
 C:/Users/axelo/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/vadefs.h:
 
-C:/Users/axelo/AppData/Local/Programs/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/avx2intrin.h:
-
-C:/Users/axelo/Documents/GitHub/Supemon/battle.h:
-
 C:/Users/axelo/AppData/Local/Programs/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/lwpintrin.h:
 
 C:/Users/axelo/Documents/GitHub/Supemon/choicesupemon.h:
+
+C:/Users/axelo/AppData/Local/Programs/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/avx2intrin.h:
+
+C:/Users/axelo/Documents/GitHub/Supemon/battle.h:
 
 C:/Users/axelo/AppData/Local/Programs/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/ammintrin.h:
 

@@ -5,11 +5,11 @@
 #include <stdlib.h>
 #include "inventory.h"
 
-// Définition des variables globales avec des valeurs initiales
-int potion_count = 0;
+
+int potion_count = 1;
 int super_potion_count = 0;
 int rare_candy_count = 0;
-int supcoins = 1000;  // On commence avec 1000 supcoins
+int supcoins = 1000;
 
 void inventory(void) {
     printf("\nInventaire :\n");
@@ -56,14 +56,12 @@ void inventory(void) {
             case 1:
                 if (potion_count > 0) {
                     printf("On which Supemon do you want to use the potion ?\n");
-                    //printf("1. %s\n", supemons[0].name);
-                    //printf("2. %s\n", supemons[1].name);
-                    //printf("3. %s\n", supemons[2].name);
+
                     int choicesupemon;
                     scanf("%d", &choicesupemon);
                     potion_count--;
                     printf("You used a potion !\n");
-                    //choicesupemon += 5;
+
                 } else {
                     printf("You don't have any potions !\n");
                 }
@@ -72,14 +70,12 @@ void inventory(void) {
             case 2:
                 if (super_potion_count > 0) {
                     printf("On which Supemon do you want to use the super potion ?\n");
-                    //printf("1. %s\n", supemons[0].name);
-                    //printf("2. %s\n", supemons[1].name);
-                    //printf("3. %s\n", supemons[2].name);
+
                     int choicesupemon;
                     scanf("%d", &choicesupemon);
                     super_potion_count--;
                     printf("You used a super potion !\n");
-                    //choicesupemon += 10;
+
                 } else {
                     printf("You don't have any super potions !\n");
                 }
@@ -88,14 +84,12 @@ void inventory(void) {
             case 3:
                 if (rare_candy_count > 0) {
                     printf("On which Supemon do you want to use the rare candy ?\n");
-                    //printf("1. %s\n", supemons[0].name);
-                    //printf("2. %s\n", supemons[1].name);
-                    //printf("3. %s\n", supemons[2].name);
+
                     int choicesupemon;
                     scanf("%d", &choicesupemon);
                     rare_candy_count--;
                     printf("You used a rare candy !\n");
-                    //choicesupemon += 1;
+
                 } else {
                     printf("You don't have any rare candies !\n");
                 }

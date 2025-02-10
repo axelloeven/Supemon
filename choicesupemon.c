@@ -12,10 +12,5 @@
 
 void team(Joueur *joueur)
 {
-    printf("Here's your team:\n");
-    for (int i = 0; i < joueur->nb_supemon; i++)
-    {
-        printf("Sup%cmon %d : %s\n", 130, i + 1, joueur->equipe[i].nom);
-    }
     center(joueur, joueur->playerName);
 }

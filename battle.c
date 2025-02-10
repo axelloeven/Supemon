@@ -11,10 +11,8 @@
 #include "inventory.h"
 #include "save.h"
 #include <math.h>
+#include <supemon.h>
 
-void tour_adversaire(Pokemon *monPokemon, Pokemon *enemy, Joueur *joueur, const char *playerName);
-
-// Fonction pour calculer si une attaque est esquivée
 void dodge(Pokemon *monPokemon, Pokemon *enemy) {
     double dodgeRate = (monPokemon->precision / (monPokemon->precision + enemy->evasion)) + 0.1;
     double rand_val_dodge = (double)rand() / RAND_MAX;
@@ -24,10 +22,66 @@ void dodge(Pokemon *monPokemon, Pokemon *enemy) {
     }
 }
 
+void tour_adversaire(Pokemon *monPokemon, Pokemon *enemy, Joueur *joueur, const char *playerName)
+{
+    int move_choice = rand() % 2;
+
+    double dodgeRate = (enemy->precision / (enemy->precision + monPokemon->evasion)) + 0.1;
+    double rand_val_dodge = (double)rand() / RAND_MAX;
+    if (rand_val_dodge > dodgeRate)
+    {
+        printf("The enemy's attack missed!\n");
+
+    }
+
+    if (move_choice == 0) {
+
+        int damage = 0;
+        if (strcmp(enemy->nom, "Supmander") == 0) {
+            damage = (enemy->attaque * 3) / monPokemon->defense;
+            printf("The enemy used Scratch! ");
+        } else if (strcmp(enemy->nom, "Supasaur") == 0) {
+            damage = (enemy->attaque * 2) / monPokemon->defense;
+            printf("The enemy used Pound! ");
+        } else if (strcmp(enemy->nom, "Supirtle") == 0) {
+            damage = (enemy->attaque * 2) / monPokemon->defense;
+            printf("The enemy used Pound! ");
+        }
+
+        double round_chance = (double)rand() / RAND_MAX;
+        if (round_chance < 0.5)
+            damage = (int)floor(damage);
+        else
+            damage = (int)ceil(damage);
+
+        monPokemon->hp -= damage;
+        printf("You lost %d HP!\n", damage);
+        saveGame(joueur, playerName);
+    } else {
+
+        if (strcmp(enemy->nom, "Supmander") == 0) {
+            printf("The enemy used Growl!\n");
+            printf("The enemy's attack increased by 1!\n");
+            enemy->attaque += 1;
+        } else if (strcmp(enemy->nom, "Supasaur") == 0) {
+            printf("The enemy used Foliage!\n");
+            printf("The enemy's evasion increased by 1!\n");
+            enemy->evasion += 1;
+        } else if (strcmp(enemy->nom, "Supirtle") == 0) {
+            if (monPokemon-> attaque = enemy->defense+1 )
+                move_choice = 0;
+            else if (monPokemon-> attaque = enemy->defense-1 )
+                printf("The enemy used Shell!\n");
+                printf("The enemy's defense increased by 1!\n");
+                enemy->defense += 1;
+        }
+    }
+}
+
 void attack(Pokemon *enemy, Pokemon *monPokemon)
 {
     if (monPokemon->hp <= 0) {
-        printf("You can't attack, your Supémon is KO!\n");
+        printf("You can't attack, your Sup%cmon is KO!\n", 130);
         return;
     }
 
@@ -38,7 +92,6 @@ void attack(Pokemon *enemy, Pokemon *monPokemon)
     int choice;
     scanf("%d", &choice);
 
-    // Vérifier si l'attaque est esquivée
     dodge(monPokemon, enemy);
 
     int damage = 0;
@@ -88,21 +141,75 @@ void change(Pokemon *monPokemon, Joueur *joueur)
     printf("\n Here your team: \n");
     for (int i = 0; i < joueur->nb_supemon; i++)
     {
-        printf("Supémon %d : %s\n", i + 1, joueur->equipe[i].nom);
+        printf("Sup%cmon %d : %s\n", 130, i + 1, joueur->equipe[i].nom);
     }
-    printf("\n Which Supémon do you want to send out? \n");
+    printf("\n Which Sup%cmon do you want to send out? \n", 130);
     int changer;
     scanf("%d", &changer);
     *monPokemon = joueur->equipe[changer-1];
 }
 
-void item()
+void item(Joueur *joueur, const char *playerName)
 {
     printf("You are accessing your inventory...\n");
-    inventory();
+    printf("Which item do you want to use?\n");
+    printf("1. Potion\n");
+    printf("2. Super Potion\n");
+    printf("3. Rare Candy\n");
+    printf("4. Back to the battle menu\n");
+    int choiceitem;
+    scanf("%d", &choiceitem);
+    switch (choiceitem) {
+        case 1:
+            if (potion_count > 0) {
+                potion_count--;
+                joueur->equipe[0].hp += 5;
+                if (joueur->equipe[0].hp > joueur->equipe[0].max_hp) {
+                    joueur->equipe[0].hp = joueur->equipe[0].max_hp;
+                    saveGame(joueur, playerName);
+                }
+                printf("You used a Potion!\n");
+                printf("Your Sup%cmon recovered 5 HP!\n", 130);
+                printf("You have %d Potions left.\n", potion_count);
+            } else {
+                printf("You don't have any Potions left!\n");
+            }
+            break;
+        case 2:
+            if (super_potion_count > 0) {
+                super_potion_count--;
+                joueur->equipe[0].hp += 10;
+                if (joueur->equipe[0].hp > joueur->equipe[0].max_hp) {
+                    joueur->equipe[0].hp = joueur->equipe[0].max_hp;
+                    saveGame(joueur, playerName);
+                }
+                printf("You used a Super Potion!\n");
+                printf("Your Sup%cmon recovered 10 HP!\n", 130);
+                printf("You have %d Super Potions left.\n", super_potion_count);
+            } else {
+                printf("You don't have any Super Potions left!\n");
+            }
+            break;
+        case 3:
+            if (rare_candy_count > 0) {
+                rare_candy_count--;
+                joueur->equipe[0].lvl += 1;
+                printf("You used a Rare Candy!\n");
+                printf("Your Sup%cmon gained 1 level!\n", 130);
+                printf("You have %d Rare Candies left.\n", rare_candy_count);
+                saveGame(joueur, playerName);
+            } else {
+                printf("You don't have any Rare Candies left!\n");
+            }
+            break;
+        case 4:
+            break;
+        default:
+            printf("Invalid choice.\n");
+    }
 }
 
-void run(Pokemon enemy, Pokemon monPokemon, Joueur *joueur, const char *playerName)
+void run(Pokemon enemy, Pokemon monPokemon, Joueur *joueur, const char *playerName, int *run_success)
 {
     double success_rate = monPokemon.vitesse / (monPokemon.vitesse + enemy.vitesse);
     double rand_val = (double)rand() / RAND_MAX;
@@ -111,11 +218,14 @@ void run(Pokemon enemy, Pokemon monPokemon, Joueur *joueur, const char *playerNa
 
     if (rand_val <= success_rate) {
         printf("You successfully ran away from the battle!\n");
+        *run_success = 1;
         outofcombat(joueur, playerName);
     } else {
         printf("You failed to run away!\nThe battle continues...\n");
         printf("The enemy attacks!\n");
         tour_adversaire(&monPokemon, &enemy, joueur, playerName);
+        *run_success = 0;
+        return;
     }
 }
 
@@ -123,77 +233,21 @@ void capture(Pokemon enemy, int maxhp, Joueur *joueur, const char *playerName)
 {
     if (joueur -> nb_supemon < MAX)
     {
-    printf("You throw a Pokéball!");
-    double catchrate=((enemy.hp- maxhp)/maxhp)-0.5;
-    double capt = (double)rand() / RAND_MAX;
-    if (capt>= catchrate)
-    {
-        printf("You captured the enemy! \n");
-        printf("You can now use it in battle!");
-        joueur -> equipe[joueur -> nb_supemon] = enemy;
-        joueur -> nb_supemon++;
-        saveGame(joueur, playerName);
-        outofcombat(joueur, playerName);
-    }
-    else
-    {
-        printf("The enemy broke free!");
-    }
-}
-}
-
-void tour_adversaire(Pokemon *monPokemon, Pokemon *enemy, Joueur *joueur, const char *playerName)
-{
-    int move_choice = rand() % 2;
-
-    double dodgeRate = (enemy->precision / (enemy->precision + monPokemon->evasion)) + 0.1;
-    double rand_val_dodge = (double)rand() / RAND_MAX;
-    if (rand_val_dodge > dodgeRate)
-    {
-        printf("The enemy's attack missed!\n");
-        return;
-    }
-
-    if (move_choice == 0) {
-        // Enemy uses basic attack
-        int damage = 0;
-        if (strcmp(enemy->nom, "Supmander") == 0) {
-            damage = (enemy->attaque * 3) / monPokemon->defense;
-            printf("The enemy used Scratch! ");
-        } else if (strcmp(enemy->nom, "Supasaur") == 0) {
-            damage = (enemy->attaque * 2) / monPokemon->defense;
-            printf("The enemy used Pound! ");
-        } else if (strcmp(enemy->nom, "Supirtle") == 0) {
-            damage = (enemy->attaque * 2) / monPokemon->defense;
-            printf("The enemy used Pound! ");
+        printf("You throw a Pok%cball!", 130);
+        double catchrate=((enemy.hp- maxhp)/maxhp)-0.5;
+        double capt = (double)rand() / RAND_MAX;
+        if (capt>= catchrate)
+        {
+            printf("You captured the enemy! \n");
+            printf("You can now use it in battle!");
+            joueur -> equipe[joueur -> nb_supemon] = enemy;
+            joueur -> nb_supemon++;
+            saveGame(joueur, playerName);
+            outofcombat(joueur, playerName);
         }
-        // Add random chance to round up or down
-        double round_chance = (double)rand() / RAND_MAX;
-        if (round_chance < 0.5)
-            damage = (int)floor(damage);
         else
-            damage = (int)ceil(damage);
-
-        monPokemon->hp -= damage;
-        printf("You lost %d HP!\n", damage);
-        saveGame(joueur, playerName);
-    } else {
-        // Enemy uses special attack
-        if (strcmp(enemy->nom, "Supmander") == 0) {
-            printf("The enemy used Growl!\n");
-            printf("The enemy's attack increased by 1!\n");
-            enemy->attaque += 1;
-        } else if (strcmp(enemy->nom, "Supasaur") == 0) {
-            printf("The enemy used Foliage!\n");
-            printf("The enemy's evasion increased by 1!\n");
-            enemy->evasion += 1;
-        } else if (strcmp(enemy->nom, "Supirtle") == 0) {
-            if (monPokemon-> attaque = enemy->defense+1 )
-                move_choice = 0;
-            else if (monPokemon-> attaque = enemy->defense-1 )
-                printf("The enemy used Shell!\n");
-                printf("The enemy's defense increased by 1!\n");
-                enemy->defense += 1;
+        {
+            printf("The enemy broke free!");
         }
     }
 }
@@ -202,10 +256,10 @@ int tousSupemonsKO(Joueur *joueur)
 {
     for (int i = 0; i < joueur->nb_supemon; i++) {
         if (joueur->equipe[i].hp > 0) {
-            return 0;  // Au moins un Pokémon est encore en vie
+            return 0;
         }
     }
-    return 1;  // Tous les Pokémon sont KO
+    return 1;
 }
 
 int battle(Joueur *joueur, const char *playerName)
@@ -219,7 +273,7 @@ int battle(Joueur *joueur, const char *playerName)
     
     int pokemonrandom = rand() % 3;
     printf("You are fighting a %s\n", pokemonrandom == 1 ? "Supmander" : pokemonrandom == 2 ? "Supasaur" : "Supirtle");
-    Pokemon enemy = {0};  // Initialiser tous les champs à 0
+    Pokemon enemy = {0};
     
     switch (pokemonrandom) {
     case 1:
@@ -227,6 +281,7 @@ int battle(Joueur *joueur, const char *playerName)
         enemy.lvl = monPokemon->lvl;
         enemy.xp = 0;
         enemy.hp = 10;
+        enemy.max_hp = 10;
         enemy.attaque = 1;
         enemy.defense = 1;
         enemy.evasion = 1;
@@ -235,12 +290,13 @@ int battle(Joueur *joueur, const char *playerName)
         
 
         for(int i = 1; i < enemy.lvl; i++) {
-            enemy.hp = (int)(enemy.hp * 1.3);
+            enemy.max_hp = (int)(enemy.max_hp * 1.3);
+            enemy.hp = enemy.max_hp;
             enemy.attaque = (int)(enemy.attaque * 1.3);
             enemy.defense = (int)(enemy.defense * 1.3);
             enemy.evasion = (int)(enemy.evasion * 1.3);
-            enemy.precision = enemy.precision * 1.3;
-            enemy.vitesse = enemy.vitesse * 1.3;
+            enemy.precision = (int)(enemy.precision * 1.3);
+            enemy.vitesse = (int)(enemy.vitesse * 1.3);
         }
         strcpy(enemy.moves[0], "Scratch deals 3 damages");
         strcpy(enemy.moves[1], "Growl gives 1 attack");
@@ -251,6 +307,7 @@ int battle(Joueur *joueur, const char *playerName)
         enemy.lvl = monPokemon->lvl;
         enemy.xp = 0;
         enemy.hp = 9;
+        enemy.max_hp = 9;
         enemy.attaque = 1;
         enemy.defense = 1;
         enemy.evasion = 3;
@@ -258,12 +315,13 @@ int battle(Joueur *joueur, const char *playerName)
         enemy.vitesse = 2.0;
         
         for(int i = 1; i < enemy.lvl; i++) {
-            enemy.hp = (int)(enemy.hp * 1.3);
+            enemy.max_hp = (int)(enemy.max_hp * 1.3);
+            enemy.hp = enemy.max_hp;
             enemy.attaque = (int)(enemy.attaque * 1.3);
             enemy.defense = (int)(enemy.defense * 1.3);
             enemy.evasion = (int)(enemy.evasion * 1.3);
-            enemy.precision = enemy.precision * 1.3;
-            enemy.vitesse = enemy.vitesse * 1.3;
+            enemy.precision = (int)(enemy.precision * 1.3);
+            enemy.vitesse = (int)(enemy.vitesse * 1.3);
         }
         strcpy(enemy.moves[0], "Pound deals 2 damages");
         strcpy(enemy.moves[1], "Foliage gives 1 Evasion");
@@ -274,6 +332,7 @@ int battle(Joueur *joueur, const char *playerName)
         enemy.lvl = monPokemon->lvl;
         enemy.xp = 0;
         enemy.hp = 11;
+        enemy.max_hp = 11;
         enemy.attaque = 1;
         enemy.defense = 2;
         enemy.evasion = 2;
@@ -281,12 +340,13 @@ int battle(Joueur *joueur, const char *playerName)
         enemy.vitesse = 2.0;
         
         for(int i = 1; i < enemy.lvl; i++) {
-            enemy.hp = (int)(enemy.hp * 1.3);
+            enemy.max_hp = (int)(enemy.max_hp * 1.3);
+            enemy.hp = enemy.max_hp;
             enemy.attaque = (int)(enemy.attaque * 1.3);
             enemy.defense = (int)(enemy.defense * 1.3);
             enemy.evasion = (int)(enemy.evasion * 1.3);
-            enemy.precision = enemy.precision * 1.3;
-            enemy.vitesse = enemy.vitesse * 1.3;
+            enemy.precision = (int)(enemy.precision * 1.3);
+            enemy.vitesse = (int)(enemy.vitesse * 1.3);
         }
         strcpy(enemy.moves[0], "Pound deals 2 damages");
         strcpy(enemy.moves[1], "Shell gives 1 defense");
@@ -308,12 +368,12 @@ int battle(Joueur *joueur, const char *playerName)
 
         if (monPokemon->hp <= 0) {
             if (tousSupemonsKO(joueur)) {
-                printf("All your Supémons are KO! You lost the battle.\n");
+                printf("All your Sup%cmons are KO! You lost the battle.\n", 130);
                 game_over = 1;
                 outofcombat(joueur, playerName);
                 return 0;
             } else {
-                printf("Your Supémon is KO! You need to switch to another Supémon.\n");
+                printf("Your Sup%cmon is KO! You need to switch to another Sup%cmon.\n", 130, 130);
                 change(monPokemon, joueur);
                 continue;
             }
@@ -323,7 +383,7 @@ int battle(Joueur *joueur, const char *playerName)
             printf("Your turn!\n");
             printf("What do you want to do?\n");
             printf("1. Move\n");
-            printf("2. Change Supémon\n");
+            printf("2. Change Sup%cmon\n", 130);
             printf("3. Use an item\n");
             printf("4. Run away\n");
             printf("5. Capture the enemy\n");
@@ -339,11 +399,17 @@ int battle(Joueur *joueur, const char *playerName)
                     change(monPokemon, joueur);
                     break;
                 case 3:
-                    item();
+                    item(joueur, playerName);
                     break;
                 case 4:
-                    run(enemy, *monPokemon, joueur, playerName);
-                    return 0;
+                    {
+                        int run_success = 0;
+                        run(enemy, *monPokemon, joueur, playerName, &run_success);
+                        if (run_success) {  // Si la fuite a réussi
+                            return 0;
+                        }
+                        break;
+                    }
                 case 5:
                     capture(enemy, maxhp, joueur, playerName);
                     return 0;
@@ -358,38 +424,44 @@ int battle(Joueur *joueur, const char *playerName)
             // Vérifier si le joueur est KO après l'attaque de l'ennemi
             if (monPokemon->hp <= 0) {
                 if (tousSupemonsKO(joueur)) {
-                    printf("All your Supémons are KO! You lost the battle.\n");
+                    printf("All your Sup%cmons are KO! You lost the battle.\n", 130);
                     game_over = 1;
                     outofcombat(joueur, playerName);
                     return 0;
                 } else {
-                    printf("Your Supémon is KO! You need to switch to another Supémon.\n");
+                    printf("Your Sup%cmon is KO! You need to switch to another Sup%cmon.\n", 130, 130);
                     change(monPokemon, joueur);
                 }
             }
             
-            playerStarts = 1;  // Passer le tour au joueur
-            continue;  // Recommencer la boucle pour le tour du joueur
+            playerStarts = 1;
+            continue;
         }
 
-        // Vérifier l'état du combat après chaque tour complet
+
         if (enemy.hp <= 0) {
             printf("You defeated the enemy!\n");
-            int reward = (rand() % 401) + 100;
+            int reward = (rand() %
+                401) + 100;
             printf("You earned %d Supcoins!\n", reward);
             supcoins += reward;
-            joueur->equipe[0].xp += 500*enemy.lvl;
+            joueur->equipe[0].xp += (rand() % 500)*enemy.lvl;
             if (lvlup(&joueur->equipe[0], joueur, playerName)) {
                 printf("%s grew to level %d!\n", joueur->equipe[0].nom, joueur->equipe[0].lvl);
             }
+            resetStats(&joueur->equipe[0]);
             game_over = 1;
             saveGame(joueur, playerName);
         }
 
-        // Alterner les tours seulement si le combat n'est pas terminé
+
         if (!game_over) {
             playerStarts = !playerStarts;
         }
+    }
+
+    if (game_over) {
+        resetStats(&joueur->equipe[0]);
     }
 
     outofcombat(joueur, playerName);

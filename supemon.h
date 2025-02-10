@@ -13,8 +13,7 @@ Pokemon Supmander(void);  // Changé de void à Pokemon
 Pokemon Supasaur(void);   // Changé de void à Pokemon
 Pokemon Supirtle(void);   // Changé de void à Pokemon
 int getMaxHP(Pokemon p);  // Nouvelle fonction
-int lvlupstat(Pokemon *p);  // Nouvelle fonction
-int xpRequis(int level);  // Nouvelle fonction
 int lvlup(Pokemon *p, Joueur *joueur, const char *playerName);  // Modification de la signature
+void resetStats(Pokemon *p);  // Nouvelle fonction
 
 #endif //SUPEMON_H

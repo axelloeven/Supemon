@@ -5,8 +5,11 @@
 #include "center.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <supemon.h>
+
 #include "choicesupemon.h"
 #include "out-of-combat.h"
+#include "save.h"
 
 void center(Joueur *joueur, const char *playerName)
 {
@@ -23,6 +26,7 @@ void center(Joueur *joueur, const char *playerName)
         for (int i = 0; i < joueur->nb_supemon; i++)
         {
             printf("Sup%cmon %d : %s\n", 130, i + 1, joueur->equipe[i].nom);
+            afficherPokemon(joueur->equipe[i]);
         }
         center(joueur, playerName);
     }
@@ -32,6 +36,7 @@ void center(Joueur *joueur, const char *playerName)
         for (int i = 0; i < joueur->nb_supemon; i++)
         {
             joueur->equipe[i].hp = getMaxHP(joueur->equipe[i]);
+            saveGame(joueur, playerName);
         }
         center(joueur, playerName);
     }

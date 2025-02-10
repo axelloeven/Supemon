@@ -3,7 +3,7 @@
 //
 
 
-// this file is using for the information of the supemon. Informations are the HP, the attack, defense, evasion, accuracy speeds and moves.
+
 #include "supemon.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -26,7 +26,7 @@ void afficherPokemon(Pokemon p) {
 }
 
 int VérifierSelectibilité(int stats[], Pokemon *p) {
-    // Vérifier si les statuts du joueur sont compatibles avec le supémon
+
     return (stats[0] >= p->hp) && (stats[1] >= p->attaque) && (stats[2] >= p->defense);
 }
 
@@ -39,18 +39,19 @@ void listeDesCoup(Pokemon p, int stat[]) {
     }
 }
 
-// Les fonctions suivantes doivent retourner un Pokemon
+
 Pokemon Supmander(void) {
     Pokemon supmander = {
         "Supmander",
         1,
         0,
         10,
+        10,
         1,
         1,
         1,
-        2,
-        2,
+        2.0,
+        2.0,
         {"Scratch", "Growl"}
     };
     return supmander;
@@ -59,13 +60,14 @@ Pokemon Supmander(void) {
 Pokemon Supasaur(void) {
     Pokemon supasaur = {
         "Supasaur",
-        1,      // niveau initial
-        0,      // XP initial
+        1,
+        0,
         9,
         1,
         1,
         3,
         1,
+        2,
         2,
         {"Pound", "Foliage"}
     };
@@ -75,28 +77,22 @@ Pokemon Supasaur(void) {
 Pokemon Supirtle(void) {
     Pokemon supirtle = {
         "Supirtle",
-        1,      // niveau initial
-        0,      // XP initial
+        1,
+        0,
         11,
         1,
         2,
         2,
         1,
         1,
+        2,
         {"Pound", "Shell"}
     };
     return supirtle;
 }
 
 int getMaxHP(Pokemon p) {
-    if (strcmp(p.nom, "Supmander") == 0) {
-        return 10;
-    } else if (strcmp(p.nom, "Supasaur") == 0) {
-        return 9;
-    } else if (strcmp(p.nom, "Supirtle") == 0) {
-        return 11;
-    }
-    return 10;  // Valeur par défaut
+    return p.max_hp;
 }
 
 int lvlupstat(Pokemon *p) {
@@ -139,21 +135,80 @@ int lvlupstat(Pokemon *p) {
 }
 int xpRequis(int level) {
     if (level == 1) {
-        return 500;
-    } else {
-        return level * 1000;
+        return 500;  
     }
+
+    return 500 + (level - 1) * 1000;
 }
 
 
 int lvlup(Pokemon *p, Joueur *joueur, const char *playerName) {
-    if (p->xp >= xpRequis(p->lvl)) {
+    int xpRequired = xpRequis(p->lvl);
+    
+    if (p->xp >= xpRequired) {
         p->lvl++;
-        p->xp = 0;
-        lvlupstat(p);
+        p->xp = p->xp - xpRequired;
+        
+
+        p->max_hp = (int)(p->max_hp * 1.3);
+        p->hp = p->max_hp;
+        p->attaque = (int)(p->attaque * 1.3);
+        p->defense = (int)(p->defense * 1.3);
+        p->evasion = (int)(p->evasion * 1.3);
+        p->precision = (int)(p->precision * 1.3);
+        p->vitesse = (int)(p->vitesse * 1.3);
+        
         saveGame(joueur, playerName);
         return 1;
     }
-    return 0;  // Ajout d'un return pour tous les cas
+    return 0;
+}
+
+void resetStats(Pokemon *p) {
+
+    int baseHP, baseAttack, baseDefense, baseEvasion;
+    double basePrecision, baseSpeed;
+    
+    if (strcmp(p->nom, "Supmander") == 0) {
+        baseHP = 10;
+        baseAttack = 1;
+        baseDefense = 1;
+        baseEvasion = 1;
+        basePrecision = 2.0;
+        baseSpeed = 2.0;
+    } else if (strcmp(p->nom, "Supasaur") == 0) {
+        baseHP = 9;
+        baseAttack = 1;
+        baseDefense = 1;
+        baseEvasion = 3;
+        basePrecision = 2.0;
+        baseSpeed = 2.0;
+    } else { // Supirtle
+        baseHP = 11;
+        baseAttack = 1;
+        baseDefense = 2;
+        baseEvasion = 2;
+        basePrecision = 1.0;
+        baseSpeed = 2.0;
+    }
+    
+
+    for(int i = 1; i < p->lvl; i++) {
+        baseHP = (int)(baseHP * 1.3);
+        baseAttack = (int)(baseAttack * 1.3);
+        baseDefense = (int)(baseDefense * 1.3);
+        baseEvasion = (int)(baseEvasion * 1.3);
+        basePrecision = (int)(basePrecision * 1.3);
+        baseSpeed = (int)(baseSpeed * 1.3);
+    }
+    
+
+    p->max_hp = baseHP;
+    p->hp = baseHP;
+    p->attaque = baseAttack;
+    p->defense = baseDefense;
+    p->evasion = baseEvasion;
+    p->precision = basePrecision;
+    p->vitesse = baseSpeed;
 }
 

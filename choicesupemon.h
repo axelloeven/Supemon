@@ -12,6 +12,7 @@ typedef struct {
     int lvl;
     int xp;
     int hp;
+    int max_hp;
     int attaque;
     int defense;
     int evasion;

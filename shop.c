@@ -23,7 +23,7 @@ int shop(Joueur *joueur, const char *playerName) {
             continue;
         }
         
-        switch (choicebs) {  // Utilisation de switch pour plus de clarté
+        switch (choicebs) {
         case 1:
             printf("What do you want to buy ?\n");
             printf("You have %d Supcoins left\n", supcoins);
@@ -101,6 +101,7 @@ int shop(Joueur *joueur, const char *playerName) {
                     supcoins += 50;
                     printf("You sold a potion !\n");
                     printf("You have %d Supcoins left\n", supcoins);
+                    saveGame(joueur, playerName);
                 } else {
                     printf("You don't have any potions to sell !\n");
                 }
@@ -111,6 +112,7 @@ int shop(Joueur *joueur, const char *playerName) {
                     supcoins += 150;
                     printf("You sold a super potion !\n");
                     printf("You have %d Supcoins left\n", supcoins);
+                    saveGame(joueur, playerName);
                 } else {
                     printf("You don't have any super potions to sell !\n");
                 }
@@ -122,6 +124,7 @@ int shop(Joueur *joueur, const char *playerName) {
                     printf("You sold a rare candy !\n");
                     printf("You have %d Supcoins left\n", supcoins);
                     printf("You get", supcoins, "Supcoins left");
+                    saveGame(joueur, playerName);
                 } else {
                     printf("You don't have any rare candies to sell !\n");
                 }
