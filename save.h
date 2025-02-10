@@ -7,7 +7,7 @@
 
 #include "choicesupemon.h"
 
-// Prototypes des fonctions
+
 void saveGame(Joueur *joueur, const char *playerName);
 int loadGame(Joueur *joueur, const char *playerName);
 

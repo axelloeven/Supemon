@@ -1,5 +1,5 @@
 //
-// Created by axelo on 08/02/2025.
+// Cr\u00E9\u00E9 par axelo le 08/02/2025.
 //
 
 #include "save.h"
@@ -10,10 +10,9 @@
 void saveGame(Joueur *joueur, const char *playerName) {
     char filename[64];
     sprintf(filename, "save_%s.json", playerName);
-    
     FILE *file = fopen(filename, "w");
     if (file == NULL) {
-        printf("Erreur lors de la création du fichier de sauvegarde.\n");
+        printf("Error with saving folder creation\n");
         return;
     }
     
@@ -33,6 +32,7 @@ void saveGame(Joueur *joueur, const char *playerName) {
         fprintf(file, "      {\n");
         fprintf(file, "        \"name\": \"%s\",\n", joueur->equipe[i].nom);
         fprintf(file, "        \"hp\": %d,\n", joueur->equipe[i].hp);
+        fprintf(file, "        \"max_hp\": %d,\n", joueur->equipe[i].max_hp);
         fprintf(file, "        \"attack\": %d,\n", joueur->equipe[i].attaque);
         fprintf(file, "        \"defense\": %d,\n", joueur->equipe[i].defense);
         fprintf(file, "        \"evasion\": %d,\n", joueur->equipe[i].evasion);
@@ -50,25 +50,24 @@ void saveGame(Joueur *joueur, const char *playerName) {
     fprintf(file, "}\n");
     
     fclose(file);
-    printf("Partie sauvegardée avec succès !\n");
+    printf("Game saved succesfully !\n");
 }
 
 int loadGame(Joueur *joueur, const char *playerName) {
     char filename[64];
     sprintf(filename, "save_%s.json", playerName);
-    
-    FILE *file = fopen(filename, "r");  // Mode texte au lieu de binaire
+    FILE *file = fopen(filename, "r");
     if (file == NULL) {
-        printf("Aucune sauvegarde trouvée pour ce joueur.\n");
+        printf("Not any saves has been found with this name \n");
         return 0;
     }
 
-    // Buffer pour lire le fichier ligne par ligne
     char line[256];
-    char value[256];
-    
+    int currentPokemon = -1;
+    for(int i = 0; i < MAX; i++) {
+        memset(&joueur->equipe[i], 0, sizeof(Pokemon));
+    }
     while (fgets(line, sizeof(line), file)) {
-        // Lecture de l'inventaire
         if (strstr(line, "\"potions\":")) {
             sscanf(line, "    \"potions\": %d,", &potion_count);
         }
@@ -81,57 +80,63 @@ int loadGame(Joueur *joueur, const char *playerName) {
         else if (strstr(line, "\"supcoins\":")) {
             sscanf(line, "    \"supcoins\": %d", &supcoins);
         }
-        // Lecture du nombre de Supémon
         else if (strstr(line, "\"nbSupemon\":")) {
             sscanf(line, "    \"nbSupemon\": %d,", &joueur->nb_supemon);
         }
-        // Lecture des Supémon
-        else if (strstr(line, "\"name\":")) {
-            int index = joueur->nb_supemon - 1;
-            sscanf(line, "        \"name\": \"%[^\"]\"", joueur->equipe[index].nom);
+        else if (strstr(line, "      {")) {
+            currentPokemon++;
         }
-        else if (strstr(line, "\"hp\":")) {
-            int index = joueur->nb_supemon - 1;
-            sscanf(line, "        \"hp\": %d,", &joueur->equipe[index].hp);
+        else if (strstr(line, "\"name\":") && currentPokemon >= 0) {
+            sscanf(line, "        \"name\": \"%[^\"]\"", joueur->equipe[currentPokemon].nom);
         }
-        else if (strstr(line, "\"attack\":")) {
-            int index = joueur->nb_supemon - 1;
-            sscanf(line, "        \"attack\": %d,", &joueur->equipe[index].attaque);
+        else if (strstr(line, "\"hp\":") && currentPokemon >= 0) {
+            sscanf(line, "        \"hp\": %d,", &joueur->equipe[currentPokemon].hp);
+            joueur->equipe[currentPokemon].max_hp = joueur->equipe[currentPokemon].hp;
         }
-        else if (strstr(line, "\"defense\":")) {
-            int index = joueur->nb_supemon - 1;
-            sscanf(line, "        \"defense\": %d,", &joueur->equipe[index].defense);
+        else if (strstr(line, "\"attack\":") && currentPokemon >= 0) {
+            sscanf(line, "        \"attack\": %d,", &joueur->equipe[currentPokemon].attaque);
         }
-        else if (strstr(line, "\"evasion\":")) {
-            int index = joueur->nb_supemon - 1;
-            sscanf(line, "        \"evasion\": %d,", &joueur->equipe[index].evasion);
+        else if (strstr(line, "\"defense\":") && currentPokemon >= 0) {
+            sscanf(line, "        \"defense\": %d,", &joueur->equipe[currentPokemon].defense);
         }
-        else if (strstr(line, "\"precision\":")) {
-            int index = joueur->nb_supemon - 1;
-            sscanf(line, "        \"precision\": %lf,", &joueur->equipe[index].precision);
+        else if (strstr(line, "\"evasion\":") && currentPokemon >= 0) {
+            sscanf(line, "        \"evasion\": %d,", &joueur->equipe[currentPokemon].evasion);
         }
-        else if (strstr(line, "\"speed\":")) {
-            int index = joueur->nb_supemon - 1;
-            sscanf(line, "        \"speed\": %lf,", &joueur->equipe[index].vitesse);
+        else if (strstr(line, "\"precision\":") && currentPokemon >= 0) {
+            sscanf(line, "        \"precision\": %lf,", &joueur->equipe[currentPokemon].precision);
         }
-        else if (strstr(line, "\"level\":")) {
-            int index = joueur->nb_supemon - 1;
-            sscanf(line, "        \"level\": %d,", &joueur->equipe[index].lvl);
+        else if (strstr(line, "\"speed\":") && currentPokemon >= 0) {
+            sscanf(line, "        \"speed\": %lf,", &joueur->equipe[currentPokemon].vitesse);
         }
-        else if (strstr(line, "\"xp\":")) {
-            int index = joueur->nb_supemon - 1;
-            sscanf(line, "        \"xp\": %d,", &joueur->equipe[index].xp);
+        else if (strstr(line, "\"level\":") && currentPokemon >= 0) {
+            sscanf(line, "        \"level\": %d,", &joueur->equipe[currentPokemon].lvl);
         }
-        else if (strstr(line, "\"moves\":")) {
-            int index = joueur->nb_supemon - 1;
-            sscanf(line, "        \"moves\": [\"%[^\"]\", \"%[^\"]\"", 
-                  joueur->equipe[index].moves[0], 
-                  joueur->equipe[index].moves[1]);
+        else if (strstr(line, "\"xp\":") && currentPokemon >= 0) {
+            sscanf(line, "        \"xp\": %d,", &joueur->equipe[currentPokemon].xp);
+        }
+        else if (strstr(line, "\"moves\":") && currentPokemon >= 0) {
+            char move1[50], move2[50];
+            sscanf(line, "        \"moves\": [\"%[^\"]\", \"%[^\"]\"", move1, move2);
+            strcpy(joueur->equipe[currentPokemon].moves[0], move1);
+            strcpy(joueur->equipe[currentPokemon].moves[1], move2);
         }
     }
-    
     fclose(file);
-    printf("Partie chargée avec succès !\n");
+    printf("Game charged succesfully !\n", 130);
+    for(int i = 0; i < joueur->nb_supemon; i++) {
+        Pokemon *p = &joueur->equipe[i];
+        int baseHP;
+        if (strcmp(p->nom, "Supmander") == 0) {
+            baseHP = 10;
+        } else if (strcmp(p->nom, "Supasaur") == 0) {
+            baseHP = 9;
+        } else {
+            baseHP = 11;
+        }
+        p->max_hp = baseHP;
+        for(int j = 1; j < p->lvl; j++) {
+            p->max_hp = (int)(p->max_hp * 1.3);
+        }
+    }
     return 1;
 }
-    

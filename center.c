@@ -6,7 +6,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <supemon.h>
-
 #include "choicesupemon.h"
 #include "out-of-combat.h"
 #include "save.h"
@@ -35,7 +34,7 @@ void center(Joueur *joueur, const char *playerName)
         printf("Your Sup%cmon are now healed !\n", 130);
         for (int i = 0; i < joueur->nb_supemon; i++)
         {
-            joueur->equipe[i].hp = getMaxHP(joueur->equipe[i]);
+            joueur->equipe[i].hp = joueur->equipe[i].max_hp;
             saveGame(joueur, playerName);
         }
         center(joueur, playerName);

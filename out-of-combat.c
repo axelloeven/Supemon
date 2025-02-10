@@ -21,12 +21,12 @@ int outofcombat(Joueur *joueur, const char *playerName)
     printf("Where do you want to go ?\n");
     printf("1. Into the wild\n");
     printf("2. In the shop\n");
-    printf("3. In the Supémon Center\n");
+    printf("3. In the Sup%cmon Center\n", 130);
     printf("4. Leave the game\n");
     printf("What do you want to do ?\n");
     int choice;
     scanf("%d", &choice);
-    printf("You chose %s !\n", choice == 1 ? "Into the wild" : choice == 2 ? "In the shop" : choice == 3 ? "In the Supémon Center" : "Leave the game");
+    printf("You chose %s !\n", choice == 1 ? "Into the wild" : choice == 2 ? "In the shop" : choice == 3 ? "In the Sup%cmon Center" : "Leave the game", 130);
     
     switch (choice) {
         case 1:
@@ -41,7 +41,6 @@ int outofcombat(Joueur *joueur, const char *playerName)
         case 4:
             printf("Goodbye !\n");
             exit(0);
-            break;
         default:
             printf("Invalid choice. Please try again.\n");
             return outofcombat(joueur, playerName);

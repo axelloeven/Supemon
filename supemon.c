@@ -39,7 +39,6 @@ void listeDesCoup(Pokemon p, int stat[]) {
     }
 }
 
-
 Pokemon Supmander(void) {
     Pokemon supmander = {
         "Supmander",
@@ -103,8 +102,6 @@ int lvlupstat(Pokemon *p) {
     float newDefense = p->defense * 1.3;
     float newEvasion = p->evasion * 1.3;
 
-    
-
     p->hp = (newHp - (int)newHp > 0) ? 
             ((rand() % 2) ? ceil(newHp) : floor(newHp)) : 
             newHp;
@@ -130,17 +127,14 @@ int lvlupstat(Pokemon *p) {
     p->vitesse = (newVitesse - (int)newVitesse > 0) ? 
                  ((rand() % 2) ? ceil(newVitesse) : floor(newVitesse)) : 
                  newVitesse;
-    
     return 1;
 }
 int xpRequis(int level) {
     if (level == 1) {
         return 500;  
     }
-
     return 500 + (level - 1) * 1000;
 }
-
 
 int lvlup(Pokemon *p, Joueur *joueur, const char *playerName) {
     int xpRequired = xpRequis(p->lvl);
@@ -148,8 +142,6 @@ int lvlup(Pokemon *p, Joueur *joueur, const char *playerName) {
     if (p->xp >= xpRequired) {
         p->lvl++;
         p->xp = p->xp - xpRequired;
-        
-
         p->max_hp = (int)(p->max_hp * 1.3);
         p->hp = p->max_hp;
         p->attaque = (int)(p->attaque * 1.3);
@@ -157,7 +149,6 @@ int lvlup(Pokemon *p, Joueur *joueur, const char *playerName) {
         p->evasion = (int)(p->evasion * 1.3);
         p->precision = (int)(p->precision * 1.3);
         p->vitesse = (int)(p->vitesse * 1.3);
-        
         saveGame(joueur, playerName);
         return 1;
     }
@@ -165,10 +156,8 @@ int lvlup(Pokemon *p, Joueur *joueur, const char *playerName) {
 }
 
 void resetStats(Pokemon *p) {
-
     int baseHP, baseAttack, baseDefense, baseEvasion;
     double basePrecision, baseSpeed;
-    
     if (strcmp(p->nom, "Supmander") == 0) {
         baseHP = 10;
         baseAttack = 1;
@@ -183,7 +172,7 @@ void resetStats(Pokemon *p) {
         baseEvasion = 3;
         basePrecision = 2.0;
         baseSpeed = 2.0;
-    } else { // Supirtle
+    } else {
         baseHP = 11;
         baseAttack = 1;
         baseDefense = 2;
@@ -191,8 +180,6 @@ void resetStats(Pokemon *p) {
         basePrecision = 1.0;
         baseSpeed = 2.0;
     }
-    
-
     for(int i = 1; i < p->lvl; i++) {
         baseHP = (int)(baseHP * 1.3);
         baseAttack = (int)(baseAttack * 1.3);
@@ -201,7 +188,6 @@ void resetStats(Pokemon *p) {
         basePrecision = (int)(basePrecision * 1.3);
         baseSpeed = (int)(baseSpeed * 1.3);
     }
-    
 
     p->max_hp = baseHP;
     p->hp = baseHP;

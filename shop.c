@@ -17,12 +17,10 @@ int shop(Joueur *joueur, const char *playerName) {
         printf("3. Exit shop\n");
         
         int choicebs;
-        if (scanf("%d", &choicebs) != 1) {  // Vérification de la saisie
-            while (getchar() != '\n');  // Vider le buffer
+        if (scanf("%d", &choicebs) != 1) {
             printf("Invalid input. Please enter a number.\n");
             continue;
         }
-        
         switch (choicebs) {
         case 1:
             printf("What do you want to buy ?\n");
@@ -31,14 +29,12 @@ int shop(Joueur *joueur, const char *playerName) {
             printf("2. Super Potion (300 Supcoins), It gives +10PV to your Supemon \n");
             printf("3. Rare Candy (700 Supcoins), It gives +1 level to your Supemon \n");
             printf("4. Back to the shop menu\n");
-            
             int choicebuy;
             if (scanf("%d", &choicebuy) != 1) {
                 while (getchar() != '\n');
                 printf("Invalid input. Please enter a number.\n");
                 continue;
             }
-            
             switch (choicebuy) {
             case 1:
                 if (supcoins >= 100) {
@@ -86,14 +82,12 @@ int shop(Joueur *joueur, const char *playerName) {
             printf("2. Super Potion (150 Supcoins)\n");
             printf("3. Rare Candy (350 Supcoins)\n");
             printf("4. Back to the shop menu\n");
-            
             int choicesell;
             if (scanf("%d", &choicesell) != 1) {
                 while (getchar() != '\n');
                 printf("Invalid input. Please enter a number.\n");
                 continue;
             }
-            
             switch (choicesell) {
             case 1:
                 if (potion_count > 0) {
@@ -135,14 +129,11 @@ int shop(Joueur *joueur, const char *playerName) {
                 printf("Invalid choice.\n");
             }
             break;
-
         case 3:
             outofcombat(joueur, playerName);
             break;
-
         default:
             printf("Invalid choice. Please select 1, 2 or 3.\n");
         }
     }
-    return 0;
 }

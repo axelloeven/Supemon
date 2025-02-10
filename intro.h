@@ -6,7 +6,6 @@
 #define INTRO_H
 
 #include "choicesupemon.h"
-#include "out-of-combat.h"
 
 void intro(Joueur *joueur);
 

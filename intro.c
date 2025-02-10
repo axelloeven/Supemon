@@ -3,7 +3,6 @@
 //
 
 #include "intro.h"
-#include "main.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <windows.h>
@@ -29,11 +28,10 @@ void intro(Joueur *joueur)
     printf("First, how do you want me to call you ?\n");
     char playerName[20];
     scanf("%s", playerName);
-    strcpy(joueur->playerName, playerName);  // Sauvegarder le nom dans la structure
-    
-    // Essayer de charger une sauvegarde existante
+    strcpy(joueur->playerName, playerName);
+
     if (loadGame(joueur, playerName)) {
-        printf("Sauvegarde trouvée ! Bienvenue à nouveau, %s !\n", playerName);
+        printf("Save founded ! Welcome again %s !\n", playerName);
         outofcombat(joueur, joueur->playerName);
         return;
     }
@@ -47,13 +45,11 @@ void intro(Joueur *joueur)
     printf("1. Supmander\n");
     printf("2. Supasaur\n");
     printf("3. Supirtle\n");
-    
     int choice;
     scanf("%d", &choice);
-    
     switch (choice) {
         case 1:
-            joueur->equipe[0] = Supmander();  // Utilisation de la fonction qui retourne un Pokemon
+            joueur->equipe[0] = Supmander();
             joueur->nb_supemon = 1;
             printf("You chose Supmander !\n");
             break;
@@ -72,11 +68,8 @@ void intro(Joueur *joueur)
             joueur->equipe[0] = Supmander();
             joueur->nb_supemon = 1;
     }
-    
     printf("Here's your starter Sup%cmon:\n", 130);
     afficherPokemon(joueur->equipe[0]);
-    
-    // Sauvegarder après avoir choisi le premier Pokémon
     saveGame(joueur, joueur->playerName);
     outofcombat(joueur, joueur->playerName);
 }

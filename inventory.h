@@ -10,7 +10,6 @@ extern int super_potion_count;
 extern int rare_candy_count;
 extern int supcoins;
 
-
 void inventory(void);
 
 #endif //INVENTORY_H
