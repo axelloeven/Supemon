@@ -173,41 +173,11 @@ CMakeFiles/Supemon.dir/supemon.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/Supemon.dir/supemon.c.s"
 	C:\Users\axelo\AppData\Local\Programs\CLion\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\axelo\Documents\GitHub\Supemon\supemon.c -o CMakeFiles\Supemon.dir\supemon.c.s
 
-CMakeFiles/Supemon.dir/choicesupemon.c.obj: CMakeFiles/Supemon.dir/flags.make
-CMakeFiles/Supemon.dir/choicesupemon.c.obj: CMakeFiles/Supemon.dir/includes_C.rsp
-CMakeFiles/Supemon.dir/choicesupemon.c.obj: C:/Users/axelo/Documents/GitHub/Supemon/choicesupemon.c
-CMakeFiles/Supemon.dir/choicesupemon.c.obj: CMakeFiles/Supemon.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\axelo\Documents\GitHub\Supemon\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/Supemon.dir/choicesupemon.c.obj"
-	C:\Users\axelo\AppData\Local\Programs\CLion\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Supemon.dir/choicesupemon.c.obj -MF CMakeFiles\Supemon.dir\choicesupemon.c.obj.d -o CMakeFiles\Supemon.dir\choicesupemon.c.obj -c C:\Users\axelo\Documents\GitHub\Supemon\choicesupemon.c
-
-CMakeFiles/Supemon.dir/choicesupemon.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/Supemon.dir/choicesupemon.c.i"
-	C:\Users\axelo\AppData\Local\Programs\CLion\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\axelo\Documents\GitHub\Supemon\choicesupemon.c > CMakeFiles\Supemon.dir\choicesupemon.c.i
-
-CMakeFiles/Supemon.dir/choicesupemon.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/Supemon.dir/choicesupemon.c.s"
-	C:\Users\axelo\AppData\Local\Programs\CLion\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\axelo\Documents\GitHub\Supemon\choicesupemon.c -o CMakeFiles\Supemon.dir\choicesupemon.c.s
-
-CMakeFiles/Supemon.dir/inventory.c.obj: CMakeFiles/Supemon.dir/flags.make
-CMakeFiles/Supemon.dir/inventory.c.obj: CMakeFiles/Supemon.dir/includes_C.rsp
-CMakeFiles/Supemon.dir/inventory.c.obj: C:/Users/axelo/Documents/GitHub/Supemon/inventory.c
-CMakeFiles/Supemon.dir/inventory.c.obj: CMakeFiles/Supemon.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\axelo\Documents\GitHub\Supemon\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/Supemon.dir/inventory.c.obj"
-	C:\Users\axelo\AppData\Local\Programs\CLion\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Supemon.dir/inventory.c.obj -MF CMakeFiles\Supemon.dir\inventory.c.obj.d -o CMakeFiles\Supemon.dir\inventory.c.obj -c C:\Users\axelo\Documents\GitHub\Supemon\inventory.c
-
-CMakeFiles/Supemon.dir/inventory.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/Supemon.dir/inventory.c.i"
-	C:\Users\axelo\AppData\Local\Programs\CLion\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\axelo\Documents\GitHub\Supemon\inventory.c > CMakeFiles\Supemon.dir\inventory.c.i
-
-CMakeFiles/Supemon.dir/inventory.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/Supemon.dir/inventory.c.s"
-	C:\Users\axelo\AppData\Local\Programs\CLion\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\axelo\Documents\GitHub\Supemon\inventory.c -o CMakeFiles\Supemon.dir\inventory.c.s
-
 CMakeFiles/Supemon.dir/save.c.obj: CMakeFiles/Supemon.dir/flags.make
 CMakeFiles/Supemon.dir/save.c.obj: CMakeFiles/Supemon.dir/includes_C.rsp
 CMakeFiles/Supemon.dir/save.c.obj: C:/Users/axelo/Documents/GitHub/Supemon/save.c
 CMakeFiles/Supemon.dir/save.c.obj: CMakeFiles/Supemon.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\axelo\Documents\GitHub\Supemon\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/Supemon.dir/save.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\axelo\Documents\GitHub\Supemon\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/Supemon.dir/save.c.obj"
 	C:\Users\axelo\AppData\Local\Programs\CLion\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Supemon.dir/save.c.obj -MF CMakeFiles\Supemon.dir\save.c.obj.d -o CMakeFiles\Supemon.dir\save.c.obj -c C:\Users\axelo\Documents\GitHub\Supemon\save.c
 
 CMakeFiles/Supemon.dir/save.c.i: cmake_force
@@ -227,8 +197,6 @@ Supemon_OBJECTS = \
 "CMakeFiles/Supemon.dir/shop.c.obj" \
 "CMakeFiles/Supemon.dir/center.c.obj" \
 "CMakeFiles/Supemon.dir/supemon.c.obj" \
-"CMakeFiles/Supemon.dir/choicesupemon.c.obj" \
-"CMakeFiles/Supemon.dir/inventory.c.obj" \
 "CMakeFiles/Supemon.dir/save.c.obj"
 
 # External object files for target Supemon
@@ -241,14 +209,12 @@ Supemon.exe: CMakeFiles/Supemon.dir/battle.c.obj
 Supemon.exe: CMakeFiles/Supemon.dir/shop.c.obj
 Supemon.exe: CMakeFiles/Supemon.dir/center.c.obj
 Supemon.exe: CMakeFiles/Supemon.dir/supemon.c.obj
-Supemon.exe: CMakeFiles/Supemon.dir/choicesupemon.c.obj
-Supemon.exe: CMakeFiles/Supemon.dir/inventory.c.obj
 Supemon.exe: CMakeFiles/Supemon.dir/save.c.obj
 Supemon.exe: CMakeFiles/Supemon.dir/build.make
 Supemon.exe: CMakeFiles/Supemon.dir/linkLibs.rsp
 Supemon.exe: CMakeFiles/Supemon.dir/objects1.rsp
 Supemon.exe: CMakeFiles/Supemon.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\axelo\Documents\GitHub\Supemon\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking C executable Supemon.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\axelo\Documents\GitHub\Supemon\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking C executable Supemon.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\Supemon.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

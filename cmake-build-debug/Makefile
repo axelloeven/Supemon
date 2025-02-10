@@ -176,30 +176,6 @@ center.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Supemon.dir\build.make CMakeFiles/Supemon.dir/center.c.s
 .PHONY : center.c.s
 
-choicesupemon.obj: choicesupemon.c.obj
-.PHONY : choicesupemon.obj
-
-# target to build an object file
-choicesupemon.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Supemon.dir\build.make CMakeFiles/Supemon.dir/choicesupemon.c.obj
-.PHONY : choicesupemon.c.obj
-
-choicesupemon.i: choicesupemon.c.i
-.PHONY : choicesupemon.i
-
-# target to preprocess a source file
-choicesupemon.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Supemon.dir\build.make CMakeFiles/Supemon.dir/choicesupemon.c.i
-.PHONY : choicesupemon.c.i
-
-choicesupemon.s: choicesupemon.c.s
-.PHONY : choicesupemon.s
-
-# target to generate assembly for a file
-choicesupemon.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Supemon.dir\build.make CMakeFiles/Supemon.dir/choicesupemon.c.s
-.PHONY : choicesupemon.c.s
-
 intro.obj: intro.c.obj
 .PHONY : intro.obj
 
@@ -223,30 +199,6 @@ intro.s: intro.c.s
 intro.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Supemon.dir\build.make CMakeFiles/Supemon.dir/intro.c.s
 .PHONY : intro.c.s
-
-inventory.obj: inventory.c.obj
-.PHONY : inventory.obj
-
-# target to build an object file
-inventory.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Supemon.dir\build.make CMakeFiles/Supemon.dir/inventory.c.obj
-.PHONY : inventory.c.obj
-
-inventory.i: inventory.c.i
-.PHONY : inventory.i
-
-# target to preprocess a source file
-inventory.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Supemon.dir\build.make CMakeFiles/Supemon.dir/inventory.c.i
-.PHONY : inventory.c.i
-
-inventory.s: inventory.c.s
-.PHONY : inventory.s
-
-# target to generate assembly for a file
-inventory.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Supemon.dir\build.make CMakeFiles/Supemon.dir/inventory.c.s
-.PHONY : inventory.c.s
 
 main.obj: main.c.obj
 .PHONY : main.obj
@@ -383,15 +335,9 @@ help:
 	@echo ... center.obj
 	@echo ... center.i
 	@echo ... center.s
-	@echo ... choicesupemon.obj
-	@echo ... choicesupemon.i
-	@echo ... choicesupemon.s
 	@echo ... intro.obj
 	@echo ... intro.i
 	@echo ... intro.s
-	@echo ... inventory.obj
-	@echo ... inventory.i
-	@echo ... inventory.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

@@ -10,9 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/axelo/Documents/GitHub/Supemon/battle.c" "CMakeFiles/Supemon.dir/battle.c.obj" "gcc" "CMakeFiles/Supemon.dir/battle.c.obj.d"
   "C:/Users/axelo/Documents/GitHub/Supemon/center.c" "CMakeFiles/Supemon.dir/center.c.obj" "gcc" "CMakeFiles/Supemon.dir/center.c.obj.d"
-  "C:/Users/axelo/Documents/GitHub/Supemon/choicesupemon.c" "CMakeFiles/Supemon.dir/choicesupemon.c.obj" "gcc" "CMakeFiles/Supemon.dir/choicesupemon.c.obj.d"
   "C:/Users/axelo/Documents/GitHub/Supemon/intro.c" "CMakeFiles/Supemon.dir/intro.c.obj" "gcc" "CMakeFiles/Supemon.dir/intro.c.obj.d"
-  "C:/Users/axelo/Documents/GitHub/Supemon/inventory.c" "CMakeFiles/Supemon.dir/inventory.c.obj" "gcc" "CMakeFiles/Supemon.dir/inventory.c.obj.d"
   "C:/Users/axelo/Documents/GitHub/Supemon/main.c" "CMakeFiles/Supemon.dir/main.c.obj" "gcc" "CMakeFiles/Supemon.dir/main.c.obj.d"
   "C:/Users/axelo/Documents/GitHub/Supemon/out-of-combat.c" "CMakeFiles/Supemon.dir/out-of-combat.c.obj" "gcc" "CMakeFiles/Supemon.dir/out-of-combat.c.obj.d"
   "C:/Users/axelo/Documents/GitHub/Supemon/save.c" "CMakeFiles/Supemon.dir/save.c.obj" "gcc" "CMakeFiles/Supemon.dir/save.c.obj.d"

@@ -8,12 +8,10 @@ include_directories(.)
 add_executable(Supemon
     intro.c
     main.c
-        out-of-combat.c
-        battle.c
-        shop.c
-        center.c
-        supemon.c
-        choicesupemon.c
-        inventory.c
-        save.c
+    out-of-combat.c
+    battle.c
+    shop.c
+    center.c
+    supemon.c
+    save.c
 )
