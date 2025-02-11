@@ -1,0 +1,273 @@
+# Supémon - Technical Documentation
+
+## Overview
+
+Supémon is a creature-battling game inspired by Pokémon, developed in C. Players can capture and train creatures called "Supémon."
+
+## Project Structure
+
+### Main Files
+
+- `main.c` - Entry point of the program
+- `intro.c` - Handles introduction and character creation
+- `battle.c` - Combat system
+- `center.c` - Supémon healing center
+- `shop.c` - Item shop
+- `save.c` - Save/load system
+- `supemon.c` - Supémon definitions
+- `out-of-combat.c` - Out-of-combat navigation
+
+### Main Data Structures
+
+#### `Pokemon` Structure
+
+```c
+typedef struct Pokemon {
+    char nom[50];
+    int lvl;
+    int xp;
+    int hp;
+    int max_hp;
+    int attaque;
+    int defense;
+    int evasion;
+    double precision;
+    double vitesse;
+    char moves[2][50];
+} Pokemon;
+
+typedef struct {
+    Pokemon equipe[MAX];
+    int nb_supemon;
+    char playerName[20];
+} Joueur;
+```
+
+## Game Mechanics
+
+### Combat System
+
+- Turn-based system between player and opponent
+- Speed determines who starts
+- Evasion system based on precision and evasion
+- 4 possible actions: Attack, Switch, Use Item, Flee
+
+### Progression System
+
+- XP gained proportional to opponent's level
+- Level up every 500XP for level 1
+- Subsequent levels: +1000XP per level (1500, 2500, etc.)
+- Stats increased by 30% per level
+
+### Capture System
+
+- Capture rate = 0.3 \* (1 - current_HP/max_HP)
+- More effective when Supémon is weakened
+
+### Save System
+
+- JSON format
+- Automatic save after significant events
+- Stores team, items, and statistics
+
+## Global Variables
+
+```c
+int potion_count;
+int super_potion_count;
+int rare_candy_count;
+int supcoins;
+```
+
+## Supémon Details
+
+### Available Types
+
+1. **Supmander**
+
+   - Base stats: HP=10, ATT=1, DEF=1, EVA=1
+   - Moves:
+     - Scratch (3x ATT/DEF damage)
+     - Growl (+1 attack)
+
+2. **Supasaur**
+
+   - Base stats: HP=9, ATT=1, DEF=1, EVA=3
+   - Moves:
+     - Pound (2x ATT/DEF damage)
+     - Foliage (+1 evasion)
+
+3. **Supirtle**
+   - Base stats: HP=11, ATT=1, DEF=2, EVA=2
+   - Moves:
+     - Pound (2x ATT/DEF damage)
+     - Shell (+1 defense)
+
+## Item System
+
+### Available Items
+
+1. **Potion**
+
+   - Restores 5 HP
+   - Price: 100 Supcoins
+   - Initial quantity: 1
+
+2. **Super Potion**
+
+   - Restores 10 HP
+   - Price: 200 Supcoins
+   - Initial quantity: 0
+
+3. **Rare Candy**
+   - Increases level by 1
+   - Price: 1000 Supcoins
+   - Initial quantity: 0
+
+## Detailed Combat System
+
+### Damage Calculation
+
+```c
+int calcul_degats(Pokemon *attaquant, Pokemon *defenseur) {
+    int degats = attaquant->attaque * attaquant->precision;
+    int defense = defenseur->defense;
+    return degats - defense;
+}
+```
+
+### Precision Calculation
+
+```c
+double calcul_precision(Pokemon *attaquant, Pokemon *defenseur) {
+    return attaquant->precision * defenseur->evasion;
+}
+```
+
+### Evasion Calculation
+
+```c
+int calcul_esquive(Pokemon *attaquant, Pokemon *defenseur) {
+    return defenseur->evasion * attaquant->precision;
+}
+```
+
+### Capture Calculation
+
+```c
+double calcul_capture(Pokemon *defenseur) {
+    return 0.3 * (1 - defenseur->hp / defenseur->max_hp);
+}
+```
+
+### Enemy AI
+
+- Random choice between attack and buff
+- For Supirtle: Strategy based on attack/defense difference
+- 50% chance to round damage up or down
+
+## Save File Management
+
+### JSON Format
+
+```json
+{
+    "playerName": "string",
+    "inventory": {
+        "potions": int,
+        "superPotions": int,
+        "rareCandy": int,
+        "supcoins": int
+    },
+    "team": {
+        "nbSupemon": int,
+        "supemons": [
+            {
+                "name": "string",
+                "hp": int,
+                "max_hp": int,
+                "attack": int,
+                "defense": int,
+                "evasion": int,
+                "precision": float,
+                "speed": float,
+                "level": int,
+                "xp": int,
+                "moves": ["string", "string"]
+            }
+        ]
+    }
+}
+```
+
+# Supémon - Technical Documentation (End)
+
+## Main Game Loop
+
+### Game States
+
+1. **Introduction**
+
+   - Name selection
+   - Starter selection
+   - Load/create save
+
+2. **Main Menu (out-of-combat)**
+
+   - Exploration (combat)
+   - Shop
+   - Supémon Center
+   - Quit
+
+3. **Combat**
+   - Initialization phase
+   - Combat loop
+   - Resolution (victory/defeat/flee)
+
+## End of Combat Conditions
+
+1. **Victory**
+
+   - Enemy Supémon KO
+   - Reward: 100-500 Supcoins
+   - XP = (0-500) \* enemy_level
+
+2. **Defeat**
+
+   - All player's Supémon KO
+   - Return to center
+
+3. **Flee**
+
+   - Rate = player_speed / (player_speed + enemy_speed)
+   - Enemy attack if failed
+
+4. **Capture**
+   - Rate = 0.3 \* (1 - current_HP/max_HP)
+   - Maximum 3 Supémon in team
+
+## Known Limitations
+
+1. Maximum 3 Supémon per team
+2. 2 moves per Supémon
+3. No elemental types
+4. Combat against AI only
+
+## Dependencies
+
+- stdio.h
+- stdlib.h
+- string.h
+- math.h
+- windows.h (for sleep)
+- unistd.h
+
+## Compilation and Execution
+
+```bash
+mkdir build
+cd build
+cmake ..
+make
+./Supemon
+```
