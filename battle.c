@@ -13,25 +13,22 @@
 #include <math.h>
 #include <supemon.h>
 
-void dodge(Pokemon *monPokemon, Pokemon *enemy) {
+int dodge(Pokemon *monPokemon, Pokemon *enemy) {
     double dodgeRate = (monPokemon->precision / (monPokemon->precision + enemy->evasion)) + 0.1;
     double rand_val_dodge = (double)rand() / RAND_MAX;
     if (rand_val_dodge > dodgeRate) {
         printf("The attack missed!\n");
-        return;
+        return 1;
     }
+    return 0;
 }
 
 void tour_adversaire(Pokemon *monPokemon, Pokemon *enemy, Joueur *joueur, const char *playerName)
 {
     int move_choice = rand() % 2;
 
-    double dodgeRate = (enemy->precision / (enemy->precision + monPokemon->evasion)) + 0.1;
-    double rand_val_dodge = (double)rand() / RAND_MAX;
-    if (rand_val_dodge > dodgeRate)
-    {
-        printf("The enemy's attack missed!\n");
-
+    if (dodge(enemy, monPokemon)) {
+        return;
     }
 
     if (move_choice == 0) {
@@ -85,7 +82,11 @@ void attack(Pokemon *enemy, Pokemon *monPokemon)
     printf("2. %s\n", monPokemon->moves[1]);
     int choice;
     scanf("%d", &choice);
-    dodge(monPokemon, enemy);
+    
+    if (dodge(monPokemon, enemy)) {
+        return;
+    }
+    
     int damage = 0;
     if (choice == 1) {
         if (strcmp(monPokemon->nom, "Supmander") == 0) {
@@ -210,31 +211,28 @@ void run(Pokemon enemy, Pokemon monPokemon, Joueur *joueur, const char *playerNa
     } else {
         printf("You failed to run away!\nThe battle continues...\n");
         printf("The enemy attacks!\n");
-        tour_adversaire(&monPokemon, &enemy, joueur, playerName);
         *run_success = 0;
-        return;
     }
 }
 
-void capture(Pokemon enemy, int maxhp, Joueur *joueur, const char *playerName)
-{
-    if (joueur -> nb_supemon < MAX)
-    {
+void capture(Pokemon enemy, int maxhp, Joueur *joueur, const char *playerName) {
+    if (joueur->nb_supemon < MAX) {
         printf("You throw a Pok%cball!", 130);
-        double catchrate=((enemy.hp- maxhp)/maxhp)-0.5;
+        double catchrate = 0.3 * (1.0 - (enemy.hp / (double)enemy.max_hp));
         double capt = (double)rand() / RAND_MAX;
-        if (capt>= catchrate)
-        {
-            printf("You captured the enemy! \n");
-            printf("You can now use it in battle!");
-            joueur -> equipe[joueur -> nb_supemon] = enemy;
-            joueur -> nb_supemon++;
+        
+        if (capt < catchrate) {
+            printf("You captured the enemy!\n");
+            printf("You can now use it in battle!\n");
+            joueur->equipe[joueur->nb_supemon] = enemy;
+            joueur->nb_supemon++;
             saveGame(joueur, playerName);
             outofcombat(joueur, playerName);
         }
-        else
-        {
-            printf("The enemy broke free!");
+        else {
+            printf("The enemy broke free!\n");
+            printf("The enemy attacks!\n");
+            tour_adversaire(&joueur->equipe[0], &enemy, joueur, playerName);
         }
     }
 }
@@ -255,6 +253,8 @@ int battle(Joueur *joueur, const char *playerName)
     printf("A wild enemy appears!\n");
     Pokemon *monPokemon = &joueur->equipe[0];
     int pokemonrandom = rand() % 3;
+    int nb_supemon_before = joueur->nb_supemon;
+    
     printf("You are fighting a %s\n", pokemonrandom == 1 ? "Supmander" : pokemonrandom == 2 ? "Supasaur" : "Supirtle");
     Pokemon enemy = {0};
     switch (pokemonrandom) {
@@ -265,8 +265,8 @@ int battle(Joueur *joueur, const char *playerName)
         enemy.attaque = 1;
         enemy.defense = 1;
         enemy.evasion = 1;
-        enemy.precision = 2.0;
-        enemy.vitesse = 2.0;
+        enemy.precision = 2;
+        enemy.vitesse = 2;
         
         for(int i = 1; i < enemy.lvl; i++) {
             enemy.max_hp = (int)(enemy.max_hp * 1.3);
@@ -276,7 +276,7 @@ int battle(Joueur *joueur, const char *playerName)
             enemy.precision = (int)enemy.precision * 1.3;
             enemy.vitesse = (int)enemy.vitesse * 1.3;
         }
-        enemy.hp = enemy.max_hp;  // Initialiser HP après les augmentations
+        enemy.hp = enemy.max_hp;
         strcpy(enemy.moves[0], "Scratch deals 3 damages");
         strcpy(enemy.moves[1], "Growl gives 1 attack");
         break;
@@ -288,8 +288,8 @@ int battle(Joueur *joueur, const char *playerName)
         enemy.attaque = 1;
         enemy.defense = 1;
         enemy.evasion = 3;
-        enemy.precision = 2.0;
-        enemy.vitesse = 2.0;
+        enemy.precision = 2;
+        enemy.vitesse = 2;
         
         for(int i = 1; i < enemy.lvl; i++) {
             enemy.max_hp = (int)(enemy.max_hp * 1.3);
@@ -299,7 +299,7 @@ int battle(Joueur *joueur, const char *playerName)
             enemy.precision = (int)enemy.precision * 1.3;
             enemy.vitesse = (int)enemy.vitesse * 1.3;
         }
-        enemy.hp = enemy.max_hp;  // Initialiser HP après les augmentations
+        enemy.hp = enemy.max_hp;
         strcpy(enemy.moves[0], "Pound deals 2 damages");
         strcpy(enemy.moves[1], "Foliage gives 1 Evasion");
         break;
@@ -311,8 +311,8 @@ int battle(Joueur *joueur, const char *playerName)
         enemy.attaque = 1;
         enemy.defense = 2;
         enemy.evasion = 2;
-        enemy.precision = 1.0;
-        enemy.vitesse = 2.0;
+        enemy.precision = 1;
+        enemy.vitesse = 2;
         
         for(int i = 1; i < enemy.lvl; i++) {
             enemy.max_hp = (int)(enemy.max_hp * 1.3);
@@ -384,7 +384,10 @@ int battle(Joueur *joueur, const char *playerName)
                     }
                 case 5:
                     capture(enemy, maxhp, joueur, playerName);
-                    return 0;
+                    if (joueur->nb_supemon > nb_supemon_before) {  // Si la capture a réussi
+                        return 0;
+                    }
+                    break;  // Sinon continuer le combat
                 default:
                     printf("Invalid choice!\n");
                     continue;

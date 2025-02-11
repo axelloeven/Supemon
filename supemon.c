@@ -62,7 +62,7 @@ Pokemon Supasaur(void) {
         1,
         0,
         9,
-        1,
+        9,
         1,
         3,
         1,
@@ -79,7 +79,7 @@ Pokemon Supirtle(void) {
         1,
         0,
         11,
-        1,
+        11,
         2,
         2,
         1,
@@ -96,6 +96,7 @@ int getMaxHP(Pokemon p) {
 
 int lvlupstat(Pokemon *p) {
     float newHp = p->hp * 1.3;
+    float newmaxHp = p->max_hp * 1.3;
     float newPrecision = p->precision * 1.3;
     float newVitesse = p->vitesse * 1.3;
     float newAttaque = p->attaque * 1.3;
@@ -105,6 +106,10 @@ int lvlupstat(Pokemon *p) {
     p->hp = (newHp - (int)newHp > 0) ? 
             ((rand() % 2) ? ceil(newHp) : floor(newHp)) : 
             newHp;
+
+    p->max_hp = (newmaxHp - (int)newmaxHp > 0) ?
+                ((rand() % 2) ? ceil(newmaxHp) : floor(newmaxHp)) :
+                newmaxHp;
     
     p->attaque = (newAttaque - (int)newAttaque > 0) ?
                  ((rand() % 2) ? ceil(newAttaque) : floor(newAttaque)) :

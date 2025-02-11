@@ -1,0 +1,27 @@
+{
+  "playerName": "than",
+  "inventory": {
+    "potions": 1,
+    "superPotions": 0,
+    "rareCandy": 1,
+    "supcoins": 1132
+  },
+  "team": {
+    "nbSupemon": 1,
+    "supemons": [
+      {
+        "name": "Supmander",
+        "hp": 13,
+        "max_hp": 13,
+        "attack": 1,
+        "defense": 1,
+        "evasion": 1,
+        "precision": 2.60,
+        "speed": 2.60,
+        "level": 2,
+        "xp": 408,
+        "moves": ["Scratch", "Growl"]
+      }
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "playerName": "ATHAN",
+  "inventory": {
+    "potions": 1,
+    "superPotions": 0,
+    "rareCandy": 0,
+    "supcoins": 1000
+  },
+  "team": {
+    "nbSupemon": 1,
+    "supemons": [
+      {
+        "name": "Supasaur",
+        "hp": 9,
+        "max_hp": 9,
+        "attack": 1,
+        "defense": 3,
+        "evasion": 1,
+        "precision": 2.00,
+        "speed": 2.00,
+        "level": 1,
+        "xp": 0,
+        "moves": ["Pound", "Foliage"]
+      }
+    ]
+  }
+}

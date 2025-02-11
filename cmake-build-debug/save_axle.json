@@ -1,0 +1,66 @@
+{
+  "playerName": "axle",
+  "inventory": {
+    "potions": 1,
+    "superPotions": 0,
+    "rareCandy": 0,
+    "supcoins": 1000
+  },
+  "team": {
+    "nbSupemon": 4,
+    "supemons": [
+      {
+        "name": "Supmander",
+        "hp": 8,
+        "max_hp": 10,
+        "attack": 1,
+        "defense": 1,
+        "evasion": 1,
+        "precision": 2.00,
+        "speed": 2.00,
+        "level": 1,
+        "xp": 0,
+        "moves": ["Scratch", "Growl"]
+      },
+      {
+        "name": "Supasaur",
+        "hp": 9,
+        "max_hp": 9,
+        "attack": 1,
+        "defense": 1,
+        "evasion": 3,
+        "precision": 2.00,
+        "speed": 2.00,
+        "level": 1,
+        "xp": 0,
+        "moves": ["Pound deals 2 damages", "Foliage gives 1 Evasion"]
+      },
+      {
+        "name": "Supmander",
+        "hp": 10,
+        "max_hp": 10,
+        "attack": 1,
+        "defense": 1,
+        "evasion": 1,
+        "precision": 2.00,
+        "speed": 2.00,
+        "level": 1,
+        "xp": 0,
+        "moves": ["Scratch deals 3 damages", "Growl gives 1 attack"]
+      },
+      {
+        "name": "Supirtle",
+        "hp": 11,
+        "max_hp": 11,
+        "attack": 1,
+        "defense": 2,
+        "evasion": 2,
+        "precision": 1.00,
+        "speed": 2.00,
+        "level": 1,
+        "xp": 0,
+        "moves": ["Pound deals 2 damages", "Shell gives 1 defense"]
+      }
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "playerName": "nathan",
+  "inventory": {
+    "potions": 1,
+    "superPotions": 0,
+    "rareCandy": 0,
+    "supcoins": 563
+  },
+  "team": {
+    "nbSupemon": 1,
+    "supemons": [
+      {
+        "name": "Supirtle",
+        "hp": 14,
+        "max_hp": 14,
+        "attack": 8,
+        "defense": 2,
+        "evasion": 1,
+        "precision": 1.30,
+        "speed": 2.60,
+        "level": 4,
+        "xp": 488,
+        "moves": ["Pound", "Shell"]
+      }
+    ]
+  }
+}

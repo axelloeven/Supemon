@@ -6,8 +6,7 @@
 #define BATTLE_H
 #include "choicesupemon.h"
 
-
-void dodge(Pokemon *monPokemon, Pokemon *enemy);
+int dodge(Pokemon *monPokemon, Pokemon *enemy);
 void afficherPokemon(Pokemon p);
 void attack(Pokemon *enemy, Pokemon *monPokemon);
 void item(Joueur *joueur, const char *playerName);
