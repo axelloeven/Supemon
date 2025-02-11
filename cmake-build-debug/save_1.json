@@ -1,0 +1,27 @@
+{
+  "playerName": "1",
+  "inventory": {
+    "potions": 1,
+    "superPotions": 0,
+    "rareCandy": 0,
+    "supcoins": 9518
+  },
+  "team": {
+    "nbSupemon": 1,
+    "supemons": [
+      {
+        "name": "Supmander",
+        "hp": 91,
+        "max_hp": 91,
+        "attack": 15,
+        "defense": 5,
+        "evasion": 5,
+        "precision": 5.20,
+        "speed": 5.20,
+        "level": 10,
+        "xp": 4323,
+        "moves": ["Scratch", "Growl"]
+      }
+    ]
+  }
+}

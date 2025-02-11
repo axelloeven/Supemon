@@ -49,8 +49,8 @@ Pokemon Supmander(void) {
         1,
         1,
         1,
-        2.0,
-        2.0,
+        2,
+        2,
         {"Scratch", "Growl"}
     };
     return supmander;
@@ -142,59 +142,26 @@ int lvlup(Pokemon *p, Joueur *joueur, const char *playerName) {
     if (p->xp >= xpRequired) {
         p->lvl++;
         p->xp = p->xp - xpRequired;
+        
+
         p->max_hp = (int)(p->max_hp * 1.3);
         p->hp = p->max_hp;
         p->attaque = (int)(p->attaque * 1.3);
         p->defense = (int)(p->defense * 1.3);
         p->evasion = (int)(p->evasion * 1.3);
-        p->precision = (int)(p->precision * 1.3);
-        p->vitesse = (int)(p->vitesse * 1.3);
+        p->precision = p->precision * 1.3;
+        p->vitesse = p->vitesse * 1.3;
+        
+        printf("%s's stats increased!\n", p->nom);
+        printf("HP: %d\n", p->max_hp);
+        printf("Attack: %d\n", p->attaque);
+        printf("Defense: %d\n", p->defense);
+        printf("Evasion: %d\n", p->evasion);
+        printf("Precision: %.2f\n", p->precision);
+        printf("Speed: %.2f\n", p->vitesse);
+        
         saveGame(joueur, playerName);
         return 1;
     }
     return 0;
 }
-
-void resetStats(Pokemon *p) {
-    int baseHP, baseAttack, baseDefense, baseEvasion;
-    double basePrecision, baseSpeed;
-    if (strcmp(p->nom, "Supmander") == 0) {
-        baseHP = 10;
-        baseAttack = 1;
-        baseDefense = 1;
-        baseEvasion = 1;
-        basePrecision = 2.0;
-        baseSpeed = 2.0;
-    } else if (strcmp(p->nom, "Supasaur") == 0) {
-        baseHP = 9;
-        baseAttack = 1;
-        baseDefense = 1;
-        baseEvasion = 3;
-        basePrecision = 2.0;
-        baseSpeed = 2.0;
-    } else {
-        baseHP = 11;
-        baseAttack = 1;
-        baseDefense = 2;
-        baseEvasion = 2;
-        basePrecision = 1.0;
-        baseSpeed = 2.0;
-    }
-    for(int i = 1; i < p->lvl; i++) {
-        baseHP = (int)(baseHP * 1.3);
-        baseAttack = (int)(baseAttack * 1.3);
-        baseDefense = (int)(baseDefense * 1.3);
-        baseEvasion = (int)(baseEvasion * 1.3);
-        basePrecision = (int)(basePrecision * 1.3);
-        baseSpeed = (int)(baseSpeed * 1.3);
-    }
-
-    p->max_hp = baseHP;
-    p->hp = baseHP;
-    p->attaque = baseAttack;
-    p->defense = baseDefense;
-    p->evasion = baseEvasion;
-    p->precision = basePrecision;
-    p->vitesse = baseSpeed;
-}
-
