@@ -200,6 +200,30 @@ intro.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Supemon.dir\build.make CMakeFiles/Supemon.dir/intro.c.s
 .PHONY : intro.c.s
 
+inventory.obj: inventory.c.obj
+.PHONY : inventory.obj
+
+# target to build an object file
+inventory.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Supemon.dir\build.make CMakeFiles/Supemon.dir/inventory.c.obj
+.PHONY : inventory.c.obj
+
+inventory.i: inventory.c.i
+.PHONY : inventory.i
+
+# target to preprocess a source file
+inventory.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Supemon.dir\build.make CMakeFiles/Supemon.dir/inventory.c.i
+.PHONY : inventory.c.i
+
+inventory.s: inventory.c.s
+.PHONY : inventory.s
+
+# target to generate assembly for a file
+inventory.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Supemon.dir\build.make CMakeFiles/Supemon.dir/inventory.c.s
+.PHONY : inventory.c.s
+
 main.obj: main.c.obj
 .PHONY : main.obj
 
@@ -338,6 +362,9 @@ help:
 	@echo ... intro.obj
 	@echo ... intro.i
 	@echo ... intro.s
+	@echo ... inventory.obj
+	@echo ... inventory.i
+	@echo ... inventory.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

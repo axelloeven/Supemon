@@ -149,8 +149,8 @@ int lvlup(Pokemon *p, Joueur *joueur, const char *playerName) {
         p->attaque = (int)(p->attaque * 1.3);
         p->defense = (int)(p->defense * 1.3);
         p->evasion = (int)(p->evasion * 1.3);
-        p->precision = p->precision * 1.3;
-        p->vitesse = p->vitesse * 1.3;
+        p->precision = (int)p->precision * 1.3;
+        p->vitesse = (int)p->vitesse * 1.3;
         
         printf("%s's stats increased!\n", p->nom);
         printf("HP: %d\n", p->max_hp);

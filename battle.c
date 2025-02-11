@@ -261,24 +261,22 @@ int battle(Joueur *joueur, const char *playerName)
     case 1:
         strcpy(enemy.nom, "Supmander");
         enemy.lvl = monPokemon->lvl;
-        enemy.xp = 0;
-        enemy.hp = 10;
         enemy.max_hp = 10;
         enemy.attaque = 1;
         enemy.defense = 1;
         enemy.evasion = 1;
         enemy.precision = 2.0;
         enemy.vitesse = 2.0;
-
+        
         for(int i = 1; i < enemy.lvl; i++) {
             enemy.max_hp = (int)(enemy.max_hp * 1.3);
-            enemy.hp = enemy.max_hp;
             enemy.attaque = (int)(enemy.attaque * 1.3);
             enemy.defense = (int)(enemy.defense * 1.3);
             enemy.evasion = (int)(enemy.evasion * 1.3);
-            enemy.precision = (int)(enemy.precision * 1.3);
-            enemy.vitesse = (int)(enemy.vitesse * 1.3);
+            enemy.precision = (int)enemy.precision * 1.3;
+            enemy.vitesse = (int)enemy.vitesse * 1.3;
         }
+        enemy.hp = enemy.max_hp;  // Initialiser HP après les augmentations
         strcpy(enemy.moves[0], "Scratch deals 3 damages");
         strcpy(enemy.moves[1], "Growl gives 1 attack");
         break;
@@ -286,8 +284,6 @@ int battle(Joueur *joueur, const char *playerName)
     case 2:
         strcpy(enemy.nom, "Supasaur");
         enemy.lvl = monPokemon->lvl;
-        enemy.xp = 0;
-        enemy.hp = 9;
         enemy.max_hp = 9;
         enemy.attaque = 1;
         enemy.defense = 1;
@@ -297,13 +293,13 @@ int battle(Joueur *joueur, const char *playerName)
         
         for(int i = 1; i < enemy.lvl; i++) {
             enemy.max_hp = (int)(enemy.max_hp * 1.3);
-            enemy.hp = enemy.max_hp;
             enemy.attaque = (int)(enemy.attaque * 1.3);
             enemy.defense = (int)(enemy.defense * 1.3);
             enemy.evasion = (int)(enemy.evasion * 1.3);
-            enemy.precision = (int)(enemy.precision * 1.3);
-            enemy.vitesse = (int)(enemy.vitesse * 1.3);
+            enemy.precision = (int)enemy.precision * 1.3;
+            enemy.vitesse = (int)enemy.vitesse * 1.3;
         }
+        enemy.hp = enemy.max_hp;  // Initialiser HP après les augmentations
         strcpy(enemy.moves[0], "Pound deals 2 damages");
         strcpy(enemy.moves[1], "Foliage gives 1 Evasion");
         break;
@@ -311,8 +307,6 @@ int battle(Joueur *joueur, const char *playerName)
     default:
         strcpy(enemy.nom, "Supirtle");
         enemy.lvl = monPokemon->lvl;
-        enemy.xp = 0;
-        enemy.hp = 11;
         enemy.max_hp = 11;
         enemy.attaque = 1;
         enemy.defense = 2;
@@ -322,13 +316,13 @@ int battle(Joueur *joueur, const char *playerName)
         
         for(int i = 1; i < enemy.lvl; i++) {
             enemy.max_hp = (int)(enemy.max_hp * 1.3);
-            enemy.hp = enemy.max_hp;
             enemy.attaque = (int)(enemy.attaque * 1.3);
             enemy.defense = (int)(enemy.defense * 1.3);
             enemy.evasion = (int)(enemy.evasion * 1.3);
-            enemy.precision = (int)(enemy.precision * 1.3);
-            enemy.vitesse = (int)(enemy.vitesse * 1.3);
+            enemy.precision = (int)enemy.precision * 1.3;
+            enemy.vitesse = (int)enemy.vitesse * 1.3;
         }
+        enemy.hp = enemy.max_hp;
         strcpy(enemy.moves[0], "Pound deals 2 damages");
         strcpy(enemy.moves[1], "Shell gives 1 defense");
         break;
@@ -414,24 +408,19 @@ int battle(Joueur *joueur, const char *playerName)
         }
         if (enemy.hp <= 0) {
             printf("You defeated the enemy!\n");
-            int reward = (rand() %
-                401) + 100;
+            int reward = (rand() % 401) + 100;
             printf("You earned %d Supcoins!\n", reward);
             supcoins += reward;
             joueur->equipe[0].xp += (rand() % 500)*enemy.lvl;
             if (lvlup(&joueur->equipe[0], joueur, playerName)) {
                 printf("%s grew to level %d!\n", joueur->equipe[0].nom, joueur->equipe[0].lvl);
             }
-            resetStats(&joueur->equipe[0]);
             game_over = 1;
             saveGame(joueur, playerName);
         }
         if (!game_over) {
             playerStarts = !playerStarts;
         }
-    }
-    if (game_over) {
-        resetStats(&joueur->equipe[0]);
     }
     outofcombat(joueur, playerName);
     return 0;
