@@ -384,10 +384,10 @@ int battle(Joueur *joueur, const char *playerName)
                     }
                 case 5:
                     capture(enemy, maxhp, joueur, playerName);
-                    if (joueur->nb_supemon > nb_supemon_before) {  // Si la capture a réussi
+                    if (joueur->nb_supemon > nb_supemon_before) {
                         return 0;
                     }
-                    break;  // Sinon continuer le combat
+                    break;
                 default:
                     printf("Invalid choice!\n");
                     continue;
@@ -414,10 +414,13 @@ int battle(Joueur *joueur, const char *playerName)
             int reward = (rand() % 401) + 100;
             printf("You earned %d Supcoins!\n", reward);
             supcoins += reward;
-            joueur->equipe[0].xp += (rand() % 500)*enemy.lvl;
-            if (lvlup(&joueur->equipe[0], joueur, playerName)) {
-                printf("%s grew to level %d!\n", joueur->equipe[0].nom, joueur->equipe[0].lvl);
+            for (int i = 0; i < joueur->nb_supemon; i++) {
+                joueur->equipe[i].xp += (rand() % 500) * enemy.lvl;
+                if (lvlup(&joueur->equipe[i], joueur, playerName)) {
+                    printf("%s grew to level %d!\n", joueur->equipe[i].nom, joueur->equipe[i].lvl);
+                }
             }
+            
             game_over = 1;
             saveGame(joueur, playerName);
         }
